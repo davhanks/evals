@@ -1,0 +1,10 @@
+.flash_message {
+	width: 100%;
+	height: 50px;
+	background-color: green;
+}
+
+.alert {
+	position: relative;
+	top: -40px;
+}
