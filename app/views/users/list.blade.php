@@ -10,7 +10,9 @@
 				<th>Last Name</th>
 				<th>Email</th>
 				<th>Member Since</th>
-				<th>Actions</th>
+				<th>Superuser</th>
+				<th>Staff</th>
+				<th>Active</th>
 			</thead>
 			<tbody>
 				@foreach($users as $user)
@@ -25,18 +27,34 @@
 						@else
 							<a class="btn btn-success btn-xs" href="{{ URL::to('users/' . $user->id . '/make_superuser') }}">Make Superuser</a>
 						@endif
+						
+					
+						
+					</td>
+					<td>
 						@if($user->is_staff())
 							<a class="btn btn-danger btn-xs" href="{{ URL::to('users/' . $user->id . '/remove_staff') }}">Remove Staff</a>
 						@else
 							<a class="btn btn-success btn-xs" href="{{ URL::to('users/' . $user->id . '/make_staff') }}">Make Staff</a>
 						@endif
-					
+					</td>
+					<td>
 						@if($user->is_active())
 							<a class="btn btn-danger btn-xs" href="{{ URL::to('users/' . $user->id . '/inactivate') }}">Inactivate</a>
 						@else
 							
 						<a class="btn btn-success btn-xs" href="{{ URL::to('users/' . $user->id . '/activate') }}">Activate</a>
 						@endif
+					</td>
+					<td>
+						{{ Form::open(array('url'=>'users/' . $user->id . '/activate', 'method'=>'post')) }}
+						<div class="switch">
+						  <input id="cmn-toggle-{{$user->id}}" class="cmn-toggle cmn-toggle-round" type="checkbox">
+						  <label for="cmn-toggle-{{$user->id}}"></label>
+						</div>
+
+						
+						{{Form::close()}}
 					</td>
 				</tr>
 				@endforeach

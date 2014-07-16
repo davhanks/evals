@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'evals',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => '7live777strong77',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

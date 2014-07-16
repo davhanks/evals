@@ -5,9 +5,9 @@ class UsersController extends BaseController {
 	public function __construct() {
 	    $this->beforeFilter('csrf', array('on'=>'post'));
 	    $this->beforeFilter('auth', array('only'=>array('get_dashboard')));
-	    $this->beforeFilter('auth', array('only'=>array('get_staff_dashboard')));
+	    
 	    $this->beforeFilter('is_staff', array('only'=>array('get_staff_dashboard')));
-	    $this->beforeFilter('is_superuser', array('only'=>array('get_dashboard')));
+	    // $this->beforeFilter('is_staff', array('only'=>array('get_dashboard')));
 	    $this->beforeFilter('is_superuser', array('only'=>array('get_user_list')));
 	}
 
@@ -28,6 +28,8 @@ class UsersController extends BaseController {
 			$user->email = $user->sanitize(Input::get('email'));
 			$user->password = $user->sanitize(Hash::make(Input::get('password')));
 			$user->is_active = '1';
+			$user->is_staff = '0';
+			$user->is_superuser = '0';
 			$user->save();
 
 

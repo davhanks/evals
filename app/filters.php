@@ -55,7 +55,7 @@ Route::filter('is_staff', function() {
 		if(Auth::user()->is_staff != '1') {
 			return Redirect::guest('users/login');
 		} else {
-			return Redirect::guest('users/staffdashboard');
+			return Redirect::guest('users/notAllowed');
 		}
 	}
 });
