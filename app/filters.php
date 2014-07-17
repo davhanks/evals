@@ -70,6 +70,19 @@ Route::filter('is_superuser', function() {
 	}
 });
 
+Route::filter('AJAX_is_superuser', function() {
+	if(Request::AJAX()) {
+		if(Auth::user()->is_superuser != '1') {
+			return 'This action is not allowed.';
+		}
+		
+	} else {
+		if(Auth::user()->is_superuser != '1') {
+			return Redirect::guest('users/dashboard');
+		}
+	}
+});
+
 
 Route::filter('auth.basic', function()
 {

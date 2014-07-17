@@ -59,6 +59,8 @@ Route::get('users/{id}/remove_staff', array('uses'=>'UsersController@get_remove_
 
 Route::get('users/categories', array('uses'=>'UsersController@get_temperature'));
 
+Route::post('users/switch_active', array('uses'=>'UsersController@post_switch_active'));
+
 // Route::post('authors', array('uses'=>'authors@post_index'));
 
 // Route::get('authors', 'Authors@index');

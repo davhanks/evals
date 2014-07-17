@@ -3,12 +3,13 @@
 class UsersController extends BaseController {
 	
 	public function __construct() {
-	    $this->beforeFilter('csrf', array('on'=>'post'));
+	    // $this->beforeFilter('csrf', array('on'=>'post'));
 	    $this->beforeFilter('auth', array('only'=>array('get_dashboard')));
 	    
 	    $this->beforeFilter('is_staff', array('only'=>array('get_staff_dashboard')));
 	    // $this->beforeFilter('is_staff', array('only'=>array('get_dashboard')));
 	    $this->beforeFilter('is_superuser', array('only'=>array('get_user_list')));
+	    $this->beforeFilter('AJAX_is_superuser', array('only'=>array('post_switch_active')));
 	}
 
 
@@ -76,6 +77,8 @@ class UsersController extends BaseController {
 		}
 	}
 
+
+
 	public function get_logout() {
 		Auth::logout();
 		return Redirect::to('users/login')->with('message', 'You have been logged out');
@@ -83,6 +86,24 @@ class UsersController extends BaseController {
 
 
 	//Controller functions for changing permissions of a user
+	public function post_switch_active() {
+
+		if(Request::AJAX()){
+			$uid = $_POST['userid'];
+			$user = User::find($uid);
+			if($user->is_active == '1') {
+				$user->is_active = '0';
+				$user->save();
+				return 'User ' . $uid . ' is now inactive';
+			} else {
+				$user->is_active = '1';
+				$user->save();
+				return 'User ' . $uid . ' is now active';
+			}
+			return 'This is the switch button for user: ' . $uid;
+		}
+	}
+
 	public function get_activate($id) {
 		$user = User::find($id);
 		$user->is_active = '1';

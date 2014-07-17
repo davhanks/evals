@@ -38,23 +38,34 @@
 							<a class="btn btn-success btn-xs" href="{{ URL::to('users/' . $user->id . '/make_staff') }}">Make Staff</a>
 						@endif
 					</td>
+				
 					<td>
+						<script>
+							$(function(){
+								$('#cmn-toggle-{{$user->id}}').click(function(e){
+					  			// e.preventDefault();
+						  			$.post('switch_active', {userid: '{{$user->id}}'},function(data){
+						  				console.log('It worked');
+						  				$('#response').html(data);
+						  			});
+					  			});
+							});
+						</script>
 						@if($user->is_active())
-							<a class="btn btn-danger btn-xs" href="{{ URL::to('users/' . $user->id . '/inactivate') }}">Inactivate</a>
-						@else
-							
-						<a class="btn btn-success btn-xs" href="{{ URL::to('users/' . $user->id . '/activate') }}">Activate</a>
-						@endif
-					</td>
-					<td>
 						{{ Form::open(array('url'=>'users/' . $user->id . '/activate', 'method'=>'post')) }}
-						<div class="switch">
-						  <input id="cmn-toggle-{{$user->id}}" class="cmn-toggle cmn-toggle-round" type="checkbox">
-						  <label for="cmn-toggle-{{$user->id}}"></label>
-						</div>
-
-						
+							<div class="switch">
+							  <input id="cmn-toggle-{{$user->id}}" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
+							  <label for="cmn-toggle-{{$user->id}}"></label>
+							</div>
 						{{Form::close()}}
+						@else
+						{{ Form::open(array('url'=>'users/' . $user->id . '/switch_active', 'method'=>'post')) }}
+							<div class="switch">
+							  <input id="cmn-toggle-{{$user->id}}" class="cmn-toggle cmn-toggle-round" type="checkbox" unchecked>
+							  <label for="cmn-toggle-{{$user->id}}"></label>
+							</div>
+						{{Form::close()}}
+						@endif
 					</td>
 				</tr>
 				@endforeach
@@ -75,7 +86,16 @@
 		  			});
 		  		});
 
-		  	});
+		  		// $('#cmn-toggle-1').click(function(e){
+		  		// 	// e.preventDefault();
+		  		// 	$.post('switch_active', {userid: '1'},function(data){
+		  		// 		console.log('It worked');
+		  		// 		$('#response').html(data);
+		  		// 	});
+		  		// });
+
+		  		
+			});
 		</script>	
 
 		<p id="response"></p>
