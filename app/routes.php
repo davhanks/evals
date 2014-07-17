@@ -60,6 +60,12 @@ Route::get('users/{id}/remove_staff', array('uses'=>'UsersController@get_remove_
 Route::get('users/categories', array('uses'=>'UsersController@get_temperature'));
 
 Route::post('users/switch_active', array('uses'=>'UsersController@post_switch_active'));
+Route::post('users/switch_staff', array('uses'=>'UsersController@post_switch_staff'));
+Route::post('users/switch_superuser', array('uses'=>'UsersController@post_switch_superuser'));
+
+
+// Tests Routes
+Route::get('tests/list', array('as'=>'test_list', 'uses'=>'TestsController@get_test_list'));
 
 // Route::post('authors', array('uses'=>'authors@post_index'));
 

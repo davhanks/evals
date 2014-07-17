@@ -94,13 +94,46 @@ class UsersController extends BaseController {
 			if($user->is_active == '1') {
 				$user->is_active = '0';
 				$user->save();
-				return 'User ' . $uid . ' is now inactive';
+				return $user->first_name . ' ' . $user->last_name . ' is now inactive';
 			} else {
 				$user->is_active = '1';
 				$user->save();
-				return 'User ' . $uid . ' is now active';
+				return $user->first_name . ' ' . $user->last_name . ' is now active';
 			}
-			return 'This is the switch button for user: ' . $uid;
+		}
+	}
+
+	public function post_switch_staff() {
+
+		if(Request::AJAX()){
+			$uid = $_POST['userid'];
+			$user = User::find($uid);
+			if($user->is_staff == '1') {
+				$user->is_staff = '0';
+				$user->save();
+				return $user->first_name . ' ' . $user->last_name . ' is no longer staff';
+			} else {
+				$user->is_staff = '1';
+				$user->save();
+				return $user->first_name . ' ' . $user->last_name . ' is now staff';
+			}
+		}
+	}
+
+	public function post_switch_superuser() {
+
+		if(Request::AJAX()){
+			$uid = $_POST['userid'];
+			$user = User::find($uid);
+			if($user->is_superuser == '1') {
+				$user->is_superuser = '0';
+				$user->save();
+				return $user->first_name . ' ' . $user->last_name . ' is no longer a superuser';
+			} else {
+				$user->is_superuser = '1';
+				$user->save();
+				return $user->first_name . ' ' . $user->last_name . ' is now a superuser';
+			}
 		}
 	}
 

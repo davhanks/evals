@@ -22,20 +22,59 @@
 					<td>{{ $user->email }}</td>
 					<td>{{ $user->created_at }}</td>
 					<td>
-						@if($user->is_superuser())
-							<a class="btn btn-danger btn-xs" href="{{ URL::to('users/' . $user->id . '/remove_superuser') }}">Remove Superuser</a>
+						<script>
+							$(function(){
+								$('#cmn-toggle-{{$user->id}}-superuser').click(function(e){
+					  			// e.preventDefault();
+						  			$.post('switch_superuser', {userid: '{{$user->id}}'},function(data){
+						  				$('#response').html(data);
+						  			});
+					  			});
+							});
+						</script>
+						@if(Auth::user()->id == $user->id)
+							<div class="switch">
+							  <input id="cmn-toggle-{{$user->id}}-superuser" class="cmn-toggle cmn-toggle-round" type="checkbox" disabled="disabled" checked>
+							  <label for="cmn-toggle-{{$user->id}}-superuser"></label>
+							</div>
+						@elseif($user->is_superuser())
+							<div class="switch">
+							  <input id="cmn-toggle-{{$user->id}}-superuser" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
+							  <label for="cmn-toggle-{{$user->id}}-superuser"></label>
+							</div>
 						@else
-							<a class="btn btn-success btn-xs" href="{{ URL::to('users/' . $user->id . '/make_superuser') }}">Make Superuser</a>
+							<div class="switch">
+							  <input id="cmn-toggle-{{$user->id}}-superuser" class="cmn-toggle cmn-toggle-round" type="checkbox" unchecked>
+							  <label for="cmn-toggle-{{$user->id}}-superuser"></label>
+							</div>
 						@endif
-						
-					
-						
 					</td>
 					<td>
-						@if($user->is_staff())
-							<a class="btn btn-danger btn-xs" href="{{ URL::to('users/' . $user->id . '/remove_staff') }}">Remove Staff</a>
+						<script>
+							$(function(){
+								$('#cmn-toggle-{{$user->id}}-staff').click(function(e){
+					  			// e.preventDefault();
+						  			$.post('switch_staff', {userid: '{{$user->id}}'},function(data){
+						  				$('#response').html(data);
+						  			});
+					  			});
+							});
+						</script>
+						@if(Auth::user()->id == $user->id)
+							<div class="switch">
+							  <input id="cmn-toggle-{{$user->id}}-staff" class="cmn-toggle cmn-toggle-round" type="checkbox" disabled="disabled" checked>
+							  <label for="cmn-toggle-{{$user->id}}-staff"></label>
+							</div>
+						@elseif($user->is_staff())
+							<div class="switch">
+							  <input id="cmn-toggle-{{$user->id}}-staff" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
+							  <label for="cmn-toggle-{{$user->id}}-staff"></label>
+							</div>
 						@else
-							<a class="btn btn-success btn-xs" href="{{ URL::to('users/' . $user->id . '/make_staff') }}">Make Staff</a>
+							<div class="switch">
+							  <input id="cmn-toggle-{{$user->id}}-staff" class="cmn-toggle cmn-toggle-round" type="checkbox" unchecked>
+							  <label for="cmn-toggle-{{$user->id}}-staff"></label>
+							</div>
 						@endif
 					</td>
 				
@@ -45,26 +84,26 @@
 								$('#cmn-toggle-{{$user->id}}').click(function(e){
 					  			// e.preventDefault();
 						  			$.post('switch_active', {userid: '{{$user->id}}'},function(data){
-						  				console.log('It worked');
 						  				$('#response').html(data);
 						  			});
 					  			});
 							});
 						</script>
-						@if($user->is_active())
-						{{ Form::open(array('url'=>'users/' . $user->id . '/activate', 'method'=>'post')) }}
+						@if(Auth::user()->id == $user->id)
+							<div class="switch">
+							  <input id="cmn-toggle-{{$user->id}}" class="cmn-toggle cmn-toggle-round" type="checkbox" disabled="disabled" checked>
+							  <label for="cmn-toggle-{{$user->id}}"></label>
+							</div>
+						@elseif($user->is_active())
 							<div class="switch">
 							  <input id="cmn-toggle-{{$user->id}}" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
 							  <label for="cmn-toggle-{{$user->id}}"></label>
 							</div>
-						{{Form::close()}}
 						@else
-						{{ Form::open(array('url'=>'users/' . $user->id . '/switch_active', 'method'=>'post')) }}
 							<div class="switch">
 							  <input id="cmn-toggle-{{$user->id}}" class="cmn-toggle cmn-toggle-round" type="checkbox" unchecked>
 							  <label for="cmn-toggle-{{$user->id}}"></label>
 							</div>
-						{{Form::close()}}
 						@endif
 					</td>
 				</tr>
@@ -84,17 +123,7 @@
 		  			$.get('categories', function(data){
 		  				$('#response').html(data);
 		  			});
-		  		});
-
-		  		// $('#cmn-toggle-1').click(function(e){
-		  		// 	// e.preventDefault();
-		  		// 	$.post('switch_active', {userid: '1'},function(data){
-		  		// 		console.log('It worked');
-		  		// 		$('#response').html(data);
-		  		// 	});
-		  		// });
-
-		  		
+		  		});		  		
 			});
 		</script>	
 
