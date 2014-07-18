@@ -1,6 +1,6 @@
 <?php
 
-class TestsController extends BaseController {
+class CoursesController extends BaseController {
 	public function __construct() {
 	    // $this->beforeFilter('csrf', array('on'=>'post'));
 	    // $this->beforeFilter('auth', array('only'=>array('get_dashboard')));
@@ -12,15 +12,13 @@ class TestsController extends BaseController {
 	}
 
 
-	public function get_test_list() {
+	public function get_course_list() {
 		if(Auth::user()->is_superuser == '1'){
-			return View::make('tests.list')
-				->with('title', 'Tests')
-				->with('tests', Test::all());
+			return View::make('courses.list')->with('title', 'Course List')
+				->with('courses', Course::all());
 		} elseif(Auth::user()->is_staff == '1'){
-			return View::make('tests.list')
-				->with('title', 'Tests')
-				->with('tests', Test::whereHas('course_id', '=', '1')->get());
+			return View::make('courses.list')->with('title', 'Course List')
+				->with('courses', Course::whereHas('course_id', '=', '1')->get());
 		} else{
 			return Redirect::to('users/dashboard')->with('message', 'Permission to view denied');
 		}

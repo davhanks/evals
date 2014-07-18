@@ -114,13 +114,16 @@
 		<script>
 		  	$(function() {
 		  		// function myFunction() {
-		  		// 	alert("hello");
+		  		// 	$.get('temperature', function(data){
+		  		// 		$('#response').html(data);
+		  		// 	});
 		  		// }
 
-		  		// setInterval(myFunction, 3000);
+		  		// setInterval(myFunction, 10000);
+
 		  		$('#ajax').click(function(e){
 		  			e.preventDefault();
-		  			$.get('categories', function(data){
+		  			$.get('temperature', function(data){
 		  				$('#response').html(data);
 		  			});
 		  		});		  		
@@ -130,6 +133,7 @@
 		<p id="response"></p>
 		<div><a id="ajax" href="#" class="btn btn-warning">AJAX</a></div>
 		<a class="btn btn-danger" href="{{ URL::to('tests/list') }}">Tests</a>
+		<a class="btn btn-success" href="{{ URL::to('courses/list') }}">Courses</a>
 	</div>
 </div>
 @stop

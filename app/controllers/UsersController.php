@@ -14,7 +14,7 @@ class UsersController extends BaseController {
 
 
 	public function get_register() {
-		return View::make('users.register');
+		return View::make('users.register')->with('title', 'Registration');
 	}
 
 	public function post_create() {
@@ -40,7 +40,7 @@ class UsersController extends BaseController {
 	}
 
 	public function get_login() {
-		return View::make('users.login');
+		return View::make('users.login')->with('title', 'Login');
 	}
 
 	public function post_sign_in() {
@@ -55,26 +55,34 @@ class UsersController extends BaseController {
 
 	public function get_dashboard() {
 
-		return View::make('users.dashboard')->with('user', Auth::user());
+		return View::make('users.dashboard')->with('title', 'Dashboard')->with('user', Auth::user());
 	}
 
 	public function get_staff_dashboard() {
 
-		return View::make('users.staffdashboard')->with('user', Auth::user());
+		return View::make('users.staffdashboard')->with('title', 'Staff Dashboard')->with('user', Auth::user());
 	}
 
 	public function get_user_list() {
-		return View::make('users.list')->with('users', User::all());
+		return View::make('users.list')->with('title', 'User List')->with('users', User::all());
 	}
 
 	//Temperature fetcher for displaying temperature alerts
 	public function get_temperature() {
-		// $url = 'http://w1.weather.gov/xml/current_obs/KSMF.xml'; 
-		// $xml = simplexml_load_file($url);
+		$url = 'http://api.openweathermap.org/data/2.5/weather?q=Sacramento';
+		$JSONstr = file_get_contents($url);
+		$response = json_decode($JSONstr);
 
-		if(Request::AJAX()){
-			return 'Temperature is over 100 deg';
+		$temp = $response->main->temp;
+
+		$faren = ($temp-273.15)*9/5 + 32;
+		if($faren >= 70){
+			if(Request::AJAX()){
+				return $faren;
+			}
 		}
+
+		
 	}
 
 
@@ -137,53 +145,53 @@ class UsersController extends BaseController {
 		}
 	}
 
-	public function get_activate($id) {
-		$user = User::find($id);
-		$user->is_active = '1';
-		$user->save();
+	// public function get_activate($id) {
+	// 	$user = User::find($id);
+	// 	$user->is_active = '1';
+	// 	$user->save();
 
-		return Redirect::to('users/list');
-	}
+	// 	return Redirect::to('users/list');
+	// }
 
-	public function get_inactivate($id) {
-		$user = User::find($id);
-		$user->is_active = '0';
-		$user->save();
+	// public function get_inactivate($id) {
+	// 	$user = User::find($id);
+	// 	$user->is_active = '0';
+	// 	$user->save();
 
-		return Redirect::to('users/list');
-	}
+	// 	return Redirect::to('users/list');
+	// }
 
-	public function get_make_superuser($id) {
-		$user = User::find($id);
-		$user->is_superuser = '1';
-		$user->save();
+	// public function get_make_superuser($id) {
+	// 	$user = User::find($id);
+	// 	$user->is_superuser = '1';
+	// 	$user->save();
 
-		return Redirect::to('users/list');
-	}
+	// 	return Redirect::to('users/list');
+	// }
 
-	public function get_remove_superuser($id) {
-		$user = User::find($id);
-		$user->is_superuser = '0';
-		$user->save();
+	// public function get_remove_superuser($id) {
+	// 	$user = User::find($id);
+	// 	$user->is_superuser = '0';
+	// 	$user->save();
 
-		return Redirect::to('users/list');
-	}
+	// 	return Redirect::to('users/list');
+	// }
 
-	public function get_make_staff($id) {
-		$user = User::find($id);
-		$user->is_staff = '1';
-		$user->save();
+	// public function get_make_staff($id) {
+	// 	$user = User::find($id);
+	// 	$user->is_staff = '1';
+	// 	$user->save();
 
-		return Redirect::to('users/list');
-	}
+	// 	return Redirect::to('users/list');
+	// }
 
-	public function get_remove_staff($id) {
-		$user = User::find($id);
-		$user->is_staff = '0';
-		$user->save();
+	// public function get_remove_staff($id) {
+	// 	$user = User::find($id);
+	// 	$user->is_staff = '0';
+	// 	$user->save();
 
-		return Redirect::to('users/list');
-	}
+	// 	return Redirect::to('users/list');
+	// }
 
 	
 }

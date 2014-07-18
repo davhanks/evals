@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Author's and Books</title>
+		<title>{{ $title }}</title>
 		{{ HTML::style('css/bootstrap.css'); }}
 		{{ HTML::style('css/dashboard.css'); }}
 		{{ HTML::style('css/font-awesome.css'); }}

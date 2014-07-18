@@ -1,6 +1,6 @@
 <?php
 
-class Test extends Eloquent {
+class Course extends Eloquent {
 	
 	// protected $fillable = array('name', 'bio');
 
