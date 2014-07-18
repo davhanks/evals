@@ -4,6 +4,7 @@
 		<title>{{ $title }}</title>
 		{{ HTML::style('css/bootstrap.css'); }}
 		{{ HTML::style('css/default.css'); }}
+		{{ HTML::style('css/form.css'); }}
 		{{ HTML::script('js/jquery.min.js'); }}
 		{{ HTML::script('js/bootstrap.js'); }}
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">

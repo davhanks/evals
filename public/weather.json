@@ -1,0 +1,31 @@
+{"coord":{"lon":-121.49,
+			"lat":38.58
+		},
+"sys":{"message":0.1052,
+		"country":"US",
+		"sunrise":1405688203,
+		"sunset":1405740470
+		},
+"weather":[
+			{"id":800,
+			"main":"Clear",
+			"description":"sky is clear",
+			"icon":"01d"
+			}
+		],
+"base":"cmc stations",
+"main":{"temp":292.87,
+		"pressure":1015,
+		"humidity":72,
+		"temp_min":292.04,
+		"temp_max":294.26
+		},
+"wind":{"speed":3.6,
+		"deg":220
+		},
+"clouds":{"all":1},
+"dt":1405699907,
+"id":5389489,
+"name":"Sacramento",
+"cod":200
+}

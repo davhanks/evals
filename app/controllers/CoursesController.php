@@ -15,14 +15,36 @@ class CoursesController extends BaseController {
 	public function get_course_list() {
 		if(Auth::user()->is_superuser == '1'){
 			return View::make('courses.list')->with('title', 'Course List')
-				->with('courses', Course::all());
+				->with('courses', Course::with('user')->get());
 		} elseif(Auth::user()->is_staff == '1'){
 			return View::make('courses.list')->with('title', 'Course List')
-				->with('courses', Course::whereHas('course_id', '=', '1')->get());
+				->with('courses', Course::where('id', '2'));
 		} else{
 			return Redirect::to('users/dashboard')->with('message', 'Permission to view denied');
 		}
 		
+	}
+
+	public function get_create_course() {
+		return View::make('courses.create')->with('title', 'Create Course');
+	}
+
+	public function post_create_course() {
+
+		$validation = Validator::make(Input::all(), Course::$rules);
+		if ($validation->fails()) {
+			return Redirect::route('create_course')->withErrors($validation)->withInput();
+		} else {
+			$course = new Course;
+			$course->name = $course->sanitize(Input::get('name'));
+			$course->description = $course->sanitize(Input::get('description'));
+			$course->is_active = '1';
+			$course->instructor_id = Auth::user()->id;
+			$course->save();
+
+
+			return Redirect::to('courses/list')->with('message', 'Course Created Successfully!');
+		}
 	}
 
 }

@@ -23,19 +23,19 @@ input {
 }
 
 ::-webkit-input-placeholder {
-   font-size: 1.3em;
+   font-size: 1.1em;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-     font-size: 1.3em;
+     font-size: 1.1em;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
 
 :-ms-input-placeholder {  
-   font-size: 1.3em;  
+   font-size: 1.1em;  
 }
 
 .row {

@@ -44,6 +44,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		}
 	}
 
+	public function courses() {
+		return $this->hasMany('Course');
+	}
+
 	use UserTrait, RemindableTrait;
 
 	/**

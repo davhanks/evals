@@ -6,7 +6,7 @@ class Course extends Eloquent {
 
 	public static $rules = array(
 		'name'=>'required|min:2',
-		'bio'=>'required|min:10'
+		'description'=>'required|min:10'
 	);
 
 	public function validate($data) {
@@ -16,5 +16,9 @@ class Course extends Eloquent {
 
 	public function sanitize($input) {
 		return HTML::entities($input);
+	}
+
+	public function user() {
+		return $this->belongsTo('User', 'id');
 	}
 }
