@@ -69,16 +69,21 @@ class UsersController extends BaseController {
 
 	//Temperature fetcher for displaying temperature alerts
 	public function get_temperature() {
-		$url = 'http://api.openweathermap.org/data/2.5/weather?q=Sacramento';
+		$apiKey = 'b6d7b34df7e2ee938658576b0f581fc6';
+		$url ='https://api.forecast.io/forecast/b6d7b34df7e2ee938658576b0f581fc6/38.58,-121.49';
+		// $url = 'http://api.openweathermap.org/data/2.5/weather?q=Sacramento';
 		$JSONstr = file_get_contents($url);
 		$response = json_decode($JSONstr);
 
-		$temp = $response->main->temp;
+		$temp = $response->currently->temperature;
 
-		$faren = ($temp-273.15)*9/5 + 32;
-		if($faren >= 70){
+		// if(Request::AJAX()){
+		// 		return $temp;
+		// 	}
+		// $faren = ($temp-273.15)*9/5 + 32;
+		if($temp >= 70){
 			if(Request::AJAX()){
-				return $faren;
+				return 'The temperature is: ' . $temp . ' deg';
 			}
 		}
 
@@ -144,6 +149,8 @@ class UsersController extends BaseController {
 			}
 		}
 	}
+
+
 
 	// public function get_activate($id) {
 	// 	$user = User::find($id);

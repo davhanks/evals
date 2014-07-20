@@ -20,7 +20,7 @@ class TestsController extends BaseController {
 		} elseif(Auth::user()->is_staff == '1'){
 			return View::make('tests.list')
 				->with('title', 'Tests')
-				->with('tests', Test::whereHas('course_id', '=', '1')->get());
+				->with('tests', Test::where('course_id', '=', '1')->get());
 		} else{
 			return Redirect::to('users/dashboard')->with('message', 'Permission to view denied');
 		}

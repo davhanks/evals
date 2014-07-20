@@ -69,6 +69,8 @@ Route::get('courses/list', array('as'=>'course_list', 'uses'=>'CoursesController
 Route::get('courses/create', array('as'=>'create_course', 'uses'=>'CoursesController@get_create_course'));
 Route::post('courses/create_course', array('uses'=>'CoursesController@post_create_course'));
 
+Route::post('courses/get_description', array('uses'=>'CoursesController@post_get_description'));
+
 // Tests Routes
 Route::get('tests/list', array('as'=>'test_list', 'uses'=>'TestsController@get_test_list'));
 

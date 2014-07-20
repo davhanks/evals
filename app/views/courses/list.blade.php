@@ -11,6 +11,7 @@
 					<th>Description</th>
 					<th>Created At</th>
 					<th>Instructor</th>
+					<th></th>
 					<th>Active</th>
 				</tr>
 			</thead>
@@ -18,7 +19,10 @@
 			@foreach ($courses as $course)
 				<tr>
 					<td>{{ $course->name }}</td>
-					<td><a class="btn btn-danger">Description</a></td>
+					<td class="relative">
+						<a id="ajax-id-{{ $course->id }}" class="description">Description</a>
+						<div id="ajax-id-{{ $course->id }}-decription" class="description-hoverbox alert alert-info">{{ $course->description }}</div>
+					</td>
 					<td>{{ $course->created_at }}</td>
 					<td>{{ $course->user->first_name . ' ' . $course->user->last_name}}</td>
 					<td></td>
