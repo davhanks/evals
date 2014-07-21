@@ -3,7 +3,11 @@
 @section('content')
 <div class="main_section">
 	<div>
-		<h1>Dashboard</h1>
+		<div class="alert alert-danger temperature">
+				<p id="response"></p><span class="glyphicon glyphicon-remove-circle close-icon"></span>
+			</div>
+		<h1>User List</h1>
+
 		<table class="table">
 			<thead>
 				<th>First Name</th>
@@ -125,13 +129,21 @@
 		  			e.preventDefault();
 		  			$.get('temperature', function(data){
 		  				$('#response').html(data);
+		  				$('.temperature').slideToggle("slow");
+		  				
 		  			});
-		  		});		  		
+		  		});	
+
+		  		$('.close-icon').click(function(){
+		  			$('.temperature').slideToggle("slow", "linear", function(){
+		  				console.log("Set user interacted function call here");
+		  			});
+		  		});	  		
 			});
 		</script>	
 
-		<p id="response"></p>
-		<div><a id="ajax" href="#" class="btn btn-warning">AJAX</a></div>
+		
+		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 		<a class="btn btn-danger" href="{{ URL::to('tests/list') }}">Tests</a>
 		<a class="btn btn-success" href="{{ URL::to('courses/list') }}">Courses</a>
 	</div>

@@ -83,7 +83,7 @@ class UsersController extends BaseController {
 		// $faren = ($temp-273.15)*9/5 + 32;
 		if($temp >= 70){
 			if(Request::AJAX()){
-				return 'The temperature is: ' . $temp . ' deg';
+				return '<span class="glyphicon glyphicon-exclamation-sign"></span> The temperature is: ' . $temp . ' deg';
 			}
 		}
 
