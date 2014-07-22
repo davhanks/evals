@@ -1,0 +1,14 @@
+.temperature {
+	display: none;
+	position: relative;
+}
+
+.close-icon {
+	position: absolute;
+	top: 40%;
+	right: 2%;
+}
+
+.close-icon:hover{
+	color:red;
+}

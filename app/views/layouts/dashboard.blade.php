@@ -5,6 +5,7 @@
 		{{ HTML::style('css/bootstrap.css'); }}
 		{{ HTML::style('css/dashboard.css'); }}
 		{{ HTML::style('css/font-awesome.css'); }}
+		{{ HTML::style('css/temperature.css'); }}
 		{{ HTML::style('css/toggle.css'); }}
 		{{ HTML::script('js/jquery.min.js'); }}
 		{{ HTML::script('js/bootstrap.js'); }}

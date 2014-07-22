@@ -12,7 +12,17 @@ class CreateSettingsTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('settings', function($table) {
+			$table->increments('id');
+			$table->integer('temp_limit');
+			$table->boolean('turned_on');
+			$table->dateTime('seen_at')->nullable();
+			$table->integer('user_id')->unsigned();
+		});
+
+		Schema::table('settings', function($table) {
+			$table->foreign('user_id')->references('id')->on('users');
+		});
 	}
 
 	/**
@@ -22,7 +32,7 @@ class CreateSettingsTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('settings');
 	}
 
 }

@@ -8,15 +8,7 @@
 		</div>
 		<h1>Dashboard</h1>
 		<p>{{ $user->first_name }} {{ $user->last_name }}</p>
-		<p>Roles: 
-		@if($user->is_superuser())
-			<span class="label label-primary"><i class="fa fa-user"></i> Superuser</span>, 
-		@endif
-		@if($user->is_staff())
-			<span class="label label-success">Staff</span> 
-		@endif
-		</p>
-		<p>Member since: {{ $user->created_at->format('M-d-Y'); }}</p>
+		<p>{{ $setting->temp_limit }}</p>
 
 		<script>
 		  	$(function() {
@@ -30,7 +22,7 @@
 
 		  		$('#ajax').click(function(e){
 		  			e.preventDefault();
-		  			$.get('temperature', function(data){
+		  			$.get('/users/temperature', function(data){
 		  				$('#response').html(data);
 		  				$('.temperature').slideToggle("slow");
 		  				

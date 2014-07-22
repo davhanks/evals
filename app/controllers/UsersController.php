@@ -58,6 +58,11 @@ class UsersController extends BaseController {
 		return View::make('users.dashboard')->with('title', 'Dashboard')->with('user', Auth::user());
 	}
 
+	public function get_settings($id) {
+		return View::make('users.settings')->with('title', 'Settings')->with('user', Auth::user())
+		    ->with('setting', Setting::where('user_id', '=', $id)->first());
+	}
+
 	public function get_staff_dashboard() {
 
 		return View::make('users.staffdashboard')->with('title', 'Staff Dashboard')->with('user', Auth::user());

@@ -39,6 +39,8 @@ Route::get('users/logout', array('uses'=>'UsersController@get_logout'));
 Route::get('users/dashboard', array('as'=>'dashboard', 'uses'=>'UsersController@get_dashboard'));
 Route::get('users/staffdashboard', array('as'=>'staff_dashboard', 'uses'=>'UsersController@get_staff_dashboard'));
 Route::get('users/list', array('as'=>'user_list', 'uses'=>'UsersController@get_user_list'));
+Route::get('users/{id}/settings', array('as=>settings', 'uses'=>'UsersController@get_settings'))
+	->where('id', '[0-9]+');
 
 Route::get('users/{id}/activate', array('uses'=>'UsersController@get_activate'))
 	->where('id', '[0-9]+');
