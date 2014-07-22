@@ -47,11 +47,12 @@
 		          	<span class="caret"></span>
 		          </a>
 		          <ul class="dropdown-menu" role="menu">
-		            <li><a href="{{ URL::to('users/account') }}">My Account</a></li>
+		            <li><a href="{{ URL::to('users/dashboard') }}"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+		            <li><a href="{{ URL::to('users/settings') }}"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 
 		            <li class="divider"></li>
 		            @if(Auth::check())
-		      			<li><a href="{{ URL::to('users/logout') }}">Logout</a></li>
+		      			<li><a href="{{ URL::to('users/logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 		      		@endif
 		          </ul>
 		        </li>

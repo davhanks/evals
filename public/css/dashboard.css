@@ -24,8 +24,8 @@ body {
 	box-shadow: 10px;
 	margin: 0 auto;
 	-webkit-box-shadow: 0px 8px 25px -3px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 8px 25px -3px rgba(0,0,0,0.75);
-box-shadow: 0px 8px 25px -3px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 8px 25px -3px rgba(0,0,0,0.75);
+	box-shadow: 0px 8px 25px -3px rgba(0,0,0,0.75);
 }
 
 #description_holder {
@@ -69,6 +69,10 @@ box-shadow: 0px 8px 25px -3px rgba(0,0,0,0.75);
 }
 
 .relative {
+	position: relative;
+}
+
+.settings {
 	position: relative;
 }
 

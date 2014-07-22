@@ -58,9 +58,9 @@ class UsersController extends BaseController {
 		return View::make('users.dashboard')->with('title', 'Dashboard')->with('user', Auth::user());
 	}
 
-	public function get_settings($id) {
+	public function get_settings() {
 		return View::make('users.settings')->with('title', 'Settings')->with('user', Auth::user())
-		    ->with('setting', Setting::where('user_id', '=', $id)->first());
+		    ->with('setting', Setting::where('user_id', '=', Auth::user()->id)->first());
 	}
 
 	public function get_staff_dashboard() {
@@ -74,23 +74,27 @@ class UsersController extends BaseController {
 
 	//Temperature fetcher for displaying temperature alerts
 	public function get_temperature() {
-		$apiKey = 'b6d7b34df7e2ee938658576b0f581fc6';
-		$url ='https://api.forecast.io/forecast/b6d7b34df7e2ee938658576b0f581fc6/38.58,-121.49';
-		// $url = 'http://api.openweathermap.org/data/2.5/weather?q=Sacramento';
-		$JSONstr = file_get_contents($url);
-		$response = json_decode($JSONstr);
+		$setting = Setting::where('user_id', '=', Auth::user()->id)->first();
 
-		$temp = $response->currently->temperature;
+		if( $setting->turned_on == '1'){
+			$apiKey = 'b6d7b34df7e2ee938658576b0f581fc6';
+			$url ='https://api.forecast.io/forecast/' . $apiKey . '/38.58,-121.49';
 
-		// if(Request::AJAX()){
-		// 		return $temp;
-		// 	}
-		// $faren = ($temp-273.15)*9/5 + 32;
-		if($temp >= 40){
-			if(Request::AJAX()){
-				return '<span class="glyphicon glyphicon-exclamation-sign"></span> The temperature is: ' . $temp . ' deg';
+			$JSONstr = file_get_contents($url);
+			$response = json_decode($JSONstr);
+
+			$temp = $response->currently->temperature;
+
+			$response = json_encode(array('showAlert'=>'true', 'temp'=>$temp));
+
+			if($temp >= $setting->temp_limit){
+				if(Request::AJAX()){
+					return $response;
+				}
 			}
 		}
+
+		
 
 		
 	}

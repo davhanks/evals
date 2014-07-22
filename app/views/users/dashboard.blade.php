@@ -30,23 +30,26 @@
 
 		  		$('#ajax').click(function(e){
 		  			e.preventDefault();
-		  			$.get('temperature', function(data){
-		  				$('#response').html(data);
-		  				$('.temperature').slideToggle("slow");
+		  			$.getJSON('temperature', function(data){
+		  				
+		  				if(data['showAlert'] == 'true'){
+		  					$('#response').html('<span class="glyphicon glyphicon-exclamation-sign"></span> The temperature is: ' + data['temp'] + ' deg');
+		  					$('.temperature').slideToggle("slow");
+		  				}
+		  				
 		  				
 		  			});
 		  		});	
 
 		  		$('.close-icon').click(function(){
 		  			$('.temperature').slideToggle("slow", "linear", function(){
-		  				console.log("Set user interacted function call here");
+		  				// console.log("Set user interacted function call here");
 		  			});
 		  		});	  		
 			});
 		</script>
 
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
-		<a class="btn btn-danger" href="{{ URL::to('users/' . Auth::user()->id . '/settings') }}">Settings</a>
 	</div>
 </div>
 @stop
