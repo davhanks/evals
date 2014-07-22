@@ -33,6 +33,12 @@ class UsersController extends BaseController {
 			$user->is_superuser = '0';
 			$user->save();
 
+			$setting = new Setting;
+			$setting->temp_limit = '95';
+			$setting->user_id = $user->id;
+			$setting->turned_on = '1';
+			$setting->save();
+
 
 			return Redirect::to('users/login')->with('message', 'Registration Successful!');
 		}

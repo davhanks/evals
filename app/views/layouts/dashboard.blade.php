@@ -57,6 +57,7 @@
 		          </ul>
 		        </li>
 
+		        @if(Auth::user()->is_superuser())
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manager Actions <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
@@ -66,6 +67,7 @@
 		            <li><a href="{{ URL::to('users/dashboard') }}">Dashboard</a></li>
 		          </ul>
 		        </li>
+		        @endif
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->

@@ -18,6 +18,7 @@ class CreateSettingsTable extends Migration {
 			$table->boolean('turned_on');
 			$table->dateTime('seen_at')->nullable();
 			$table->integer('user_id')->unsigned();
+			$table->timestamps();
 		});
 
 		Schema::table('settings', function($table) {
