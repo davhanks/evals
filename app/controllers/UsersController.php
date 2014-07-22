@@ -99,9 +99,19 @@ class UsersController extends BaseController {
 				}
 			}
 		}
+	}
 
-		
+	public function post_change_temp_limit() {
 
+		if(Request::AJAX()) {
+			$setting = Setting::where('user_id', '=', Auth::user()->id)->first();
+
+			$setting->temp_limit = $_POST['temp_limit'];
+			$setting->save();
+
+			$data = json_encode(array('success'=>true, 'temp'=>$setting->temp_limit));
+			return $data;
+		}
 		
 	}
 

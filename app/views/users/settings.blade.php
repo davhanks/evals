@@ -12,14 +12,35 @@
 	        @endforeach
 		<div class="settings">
 			<p>{{ $user->first_name }} {{ $user->last_name }}</p>
-			<p>Tempurature Limit: {{ $setting->temp_limit }} deg</p>
-			{{ Form::open(array('url'=>'users/temp_update', 'method'=>'post')) }}
+			<p>Tempurature Limit: <span id="temperature">{{ $setting->temp_limit }}</span> deg</p>
+
+
+			{{ Form::open(array('url'=>'users/temp_update', 'method'=>'post', 'id'=>'temp_change')) }}
 				{{ Form::text('temp_limit', null, array('placeholder'=>'Ex: 80')) }}
 				{{ Form::submit('Change', array('class'=>'btn btn-xs btn-primary')) }}
 			{{ Form::close() }}
 		</div>
 		<script>
 		  	$(function() {
+
+		  		$("#temp_change").submit(function(event){
+		  			event.preventDefault();
+
+		  			$.ajax({
+				    url: "/users/change_temp_limit",
+				    type: "POST",
+				    data: $(this).serialize(),
+				    cache: false,
+				    dataType: "json",
+				    success: function(data) {
+				        if(data["success"]) {
+				    	    $('#temperature').html(data["temp"]);
+				        }
+				    }
+					});
+		  		});
+
+
 		  		// function myFunction() {
 		  		// 	$.get('temperature', function(data){
 		  		// 		$('#response').html(data);
