@@ -20,6 +20,16 @@ input {
 	height: 50px;
 	background-color: rgba(255,255,255,0.85);
 	font-size: 1.3em;
+	border-width: 0px;
+	padding-left: 7px;
+}
+
+input:focus {
+	
+	border-left-width: 7px;
+	border-color: #428bca;
+	padding-left: 0px;
+	color: #428bca;
 }
 
 ::-webkit-input-placeholder {
