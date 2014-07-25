@@ -103,10 +103,22 @@ class UsersController extends BaseController {
 
 	public function post_change_temp_limit() {
 
+		$rules = array('temp_limit'=>'digits_between:1,3');
+
 		if(Request::AJAX()) {
+
+			$v = Validator::make(Input::all(), $rules);
+
+			if($v->fails()) {
+				return Response::json(array(
+					'success'=>false, 
+					'errors'=> $v->getMessageBag()->toArray()
+				), 200);
+			}
+
 			$setting = Setting::where('user_id', '=', Auth::user()->id)->first();
 
-			$setting->temp_limit = $_POST['temp_limit'];
+			$setting->temp_limit = e($_POST['temp_limit']);
 			$setting->save();
 
 			$data = json_encode(array('success'=>true, 'temp'=>$setting->temp_limit));

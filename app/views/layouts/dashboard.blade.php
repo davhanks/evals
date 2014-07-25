@@ -6,6 +6,7 @@
 		{{ HTML::style('css/dashboard.css'); }}
 		{{ HTML::style('css/font-awesome.css'); }}
 		{{ HTML::style('css/temperature.css'); }}
+		{{ HTML::style('css/settings.css'); }}
 		{{ HTML::style('css/toggle.css'); }}
 		{{ HTML::script('js/jquery.min.js'); }}
 		{{ HTML::script('js/bootstrap.js'); }}
@@ -80,5 +81,7 @@
 		@endif
 			
 		@yield('content')
+		{{ HTML::script('js/weather.js'); }}
+		{{ HTML::script('js/settings/settings.js'); }}
 	</body>
 </html>

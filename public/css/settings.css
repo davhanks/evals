@@ -1,14 +1,14 @@
-.temperature {
+#errors {
 	display: none;
 	position: relative;
 }
 
-.close-icon {
+.close-errors-icon {
 	position: absolute;
 	top: 40%;
 	right: 2%;
 }
 
-.close-icon:hover{
+.close-errors-icon:hover{
 	color: #ca2408;
 }
