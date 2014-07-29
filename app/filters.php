@@ -48,24 +48,30 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('logged_in', function() {
+	if(Auth::check()) {
+		return Redirect::to('users/dashboard');
+	}
+});
+
 Route::filter('is_staff', function() {
 	if(Auth::guest()) {
 		return Redirect::guest('users/login');
 	} else {
 		if(Auth::user()->is_staff != '1') {
-			return Redirect::guest('users/login');
+			return Redirect::to('users/login');
 		} else {
-			return Redirect::guest('users/notAllowed');
+			return Redirect::to('users/notAllowed');
 		}
 	}
 });
 
 Route::filter('is_superuser', function() {
 	if(Auth::guest()) {
-		return Redirect::guest('users/login');
+		return Redirect::to('users/login');
 	} else {
 		if(Auth::user()->is_superuser != '1') {
-			return Redirect::guest('users/dashboard');
+			return Redirect::to('users/dashboard');
 		}
 	}
 });
@@ -78,7 +84,7 @@ Route::filter('AJAX_is_superuser', function() {
 		
 	} else {
 		if(Auth::user()->is_superuser != '1') {
-			return Redirect::guest('users/dashboard');
+			return Redirect::to('users/dashboard');
 		}
 	}
 });

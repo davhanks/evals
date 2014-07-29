@@ -25,6 +25,10 @@ class CoursesController extends BaseController {
 		
 	}
 
+	public function get_view_course($id) {
+		return View::make('courses.view')->with('title', 'View Course')->with('course', Course::find($id));
+	}
+
 	public function get_create_course() {
 		return View::make('courses.create')->with('title', 'Create Course');
 	}
@@ -44,6 +48,23 @@ class CoursesController extends BaseController {
 
 
 			return Redirect::to('courses/list')->with('message', 'Course Created Successfully!');
+		}
+	}
+
+	public function post_switch_active() {
+
+		if(Request::AJAX()){
+			$cid = $_POST['courseid'];
+			$course = Course::find($cid);
+			if($course->is_active == '1') {
+				$course->is_active = '0';
+				$course->save();
+				return $course->name . ' is now inactive';
+			} else {
+				$course->is_active = '1';
+				$course->save();
+				return $course->name . ' is now active';
+			}
 		}
 	}
 

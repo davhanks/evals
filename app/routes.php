@@ -70,11 +70,17 @@ Route::post('users/change_temp_limit', array('uses'=>'UsersController@post_chang
 Route::get('courses/list', array('as'=>'course_list', 'uses'=>'CoursesController@get_course_list'));
 Route::get('courses/create', array('as'=>'create_course', 'uses'=>'CoursesController@get_create_course'));
 Route::post('courses/create_course', array('uses'=>'CoursesController@post_create_course'));
-
 Route::post('courses/get_description', array('uses'=>'CoursesController@post_get_description'));
+Route::get('courses/{id}/view', array('as'=>'view_course', 'uses'=>'CoursesController@get_view_course'))
+	->where('id', '[0-9]+');
+
+//Ajax
+Route::post('courses/switch_active', array('uses'=>'CoursesController@post_switch_active'));
 
 // Tests Routes
 Route::get('tests/list', array('as'=>'test_list', 'uses'=>'TestsController@get_test_list'));
+Route::get('tests/{id}/new', array('as'=>'new_test', 'uses'=>'TestsController@get_test_new'))
+	->where('id', '[0-9]+');
 
 // Route::post('authors', array('uses'=>'authors@post_index'));
 

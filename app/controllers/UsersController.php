@@ -10,6 +10,7 @@ class UsersController extends BaseController {
 	    // $this->beforeFilter('is_staff', array('only'=>array('get_dashboard')));
 	    $this->beforeFilter('is_superuser', array('only'=>array('get_user_list')));
 	    $this->beforeFilter('AJAX_is_superuser', array('only'=>array('post_switch_active')));
+	    $this->beforeFilter('logged_in', array('only'=>array('get_login')));
 	}
 
 
@@ -50,7 +51,7 @@ class UsersController extends BaseController {
 	}
 
 	public function post_sign_in() {
-		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
+		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')), true)) {
 		    return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
 		} else {
 		    return Redirect::to('users/login')
@@ -186,56 +187,5 @@ class UsersController extends BaseController {
 			}
 		}
 	}
-
-
-
-	// public function get_activate($id) {
-	// 	$user = User::find($id);
-	// 	$user->is_active = '1';
-	// 	$user->save();
-
-	// 	return Redirect::to('users/list');
-	// }
-
-	// public function get_inactivate($id) {
-	// 	$user = User::find($id);
-	// 	$user->is_active = '0';
-	// 	$user->save();
-
-	// 	return Redirect::to('users/list');
-	// }
-
-	// public function get_make_superuser($id) {
-	// 	$user = User::find($id);
-	// 	$user->is_superuser = '1';
-	// 	$user->save();
-
-	// 	return Redirect::to('users/list');
-	// }
-
-	// public function get_remove_superuser($id) {
-	// 	$user = User::find($id);
-	// 	$user->is_superuser = '0';
-	// 	$user->save();
-
-	// 	return Redirect::to('users/list');
-	// }
-
-	// public function get_make_staff($id) {
-	// 	$user = User::find($id);
-	// 	$user->is_staff = '1';
-	// 	$user->save();
-
-	// 	return Redirect::to('users/list');
-	// }
-
-	// public function get_remove_staff($id) {
-	// 	$user = User::find($id);
-	// 	$user->is_staff = '0';
-	// 	$user->save();
-
-	// 	return Redirect::to('users/list');
-	// }
-
 	
 }

@@ -39,7 +39,7 @@
 						@if(Auth::user()->id == $user->id)
 							<div class="switch">
 							  <input id="cmn-toggle-{{$user->id}}-superuser" class="cmn-toggle cmn-toggle-round" type="checkbox" disabled="disabled" checked>
-							  <label for="cmn-toggle-{{$user->id}}-superuser"></label>
+							  <label style="cursor: not-allowed;" for="cmn-toggle-{{$user->id}}-superuser"></label>
 							</div>
 						@elseif($user->is_superuser())
 							<div class="switch">
@@ -67,7 +67,7 @@
 						@if(Auth::user()->id == $user->id)
 							<div class="switch">
 							  <input id="cmn-toggle-{{$user->id}}-staff" class="cmn-toggle cmn-toggle-round" type="checkbox" disabled="disabled" checked>
-							  <label for="cmn-toggle-{{$user->id}}-staff"></label>
+							  <label style="cursor: not-allowed;" for="cmn-toggle-{{$user->id}}-staff"></label>
 							</div>
 						@elseif($user->is_staff())
 							<div class="switch">
@@ -95,8 +95,8 @@
 						</script>
 						@if(Auth::user()->id == $user->id)
 							<div class="switch">
-							  <input id="cmn-toggle-{{$user->id}}" class="cmn-toggle cmn-toggle-round" type="checkbox" disabled="disabled" checked>
-							  <label for="cmn-toggle-{{$user->id}}"></label>
+							  <input id="cmn-toggle-{{$user->id}}" class="cmn-toggle cmn-toggle-round not-allowed" type="checkbox" disabled="disabled" checked>
+							  <label style="cursor: not-allowed;" for="cmn-toggle-{{$user->id}}"></label>
 							</div>
 						@elseif($user->is_active())
 							<div class="switch">
@@ -114,34 +114,6 @@
 				@endforeach
 			</tbody>
 		</table>
-
-		<script>
-		  	$(function() {
-		  		// function myFunction() {
-		  		// 	$.get('temperature', function(data){
-		  		// 		$('#response').html(data);
-		  		// 	});
-		  		// }
-
-		  		// setInterval(myFunction, 10000);
-
-		  		$('#ajax').click(function(e){
-		  			e.preventDefault();
-		  			$.get('temperature', function(data){
-		  				$('#response').html(data);
-		  				$('.temperature').slideToggle("slow");
-		  				
-		  			});
-		  		});	
-
-		  		$('.close-icon').click(function(){
-		  			$('.temperature').slideToggle("slow", "linear", function(){
-		  				console.log("Set user interacted function call here");
-		  			});
-		  		});	  		
-			});
-		</script>	
-
 		
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 		<a class="btn btn-danger" href="{{ URL::to('tests/list') }}">Tests</a>

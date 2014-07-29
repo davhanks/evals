@@ -21,4 +21,12 @@ class Course extends Eloquent {
 	public function user() {
 		return $this->belongsTo('User', 'id');
 	}
+
+	public function is_active() {
+		if ($this->is_active == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

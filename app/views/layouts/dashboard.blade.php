@@ -8,6 +8,7 @@
 		{{ HTML::style('css/temperature.css'); }}
 		{{ HTML::style('css/settings.css'); }}
 		{{ HTML::style('css/toggle.css'); }}
+		{{ HTML::style('css/tests/newTest.css'); }}
 		{{ HTML::script('js/jquery.min.js'); }}
 		{{ HTML::script('js/bootstrap.js'); }}
 		
@@ -62,10 +63,10 @@
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manager Actions <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
-		            <li><a href="{{ URL::to('users/list') }}">Users</a></li>
-		            <li><a href="{{ URL::to('courses/list') }}">Courses</a></li>
+		            <li><a href="{{ URL::to('users/list') }}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+		            <li><a href="{{ URL::to('courses/list') }}"><span class="glyphicon glyphicon-th-list"></span> Courses</a></li>
 		            <li class="divider"></li>
-		            <li><a href="{{ URL::to('users/dashboard') }}">Dashboard</a></li>
+		            <li><a href="{{ URL::to('users/dashboard') }}"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
 		          </ul>
 		        </li>
 		        @endif

@@ -27,4 +27,8 @@ class TestsController extends BaseController {
 		
 	}
 
+	public function get_test_new($courseid) {
+		return View::make('tests.new')->with('title', 'Create New Test')->with('courseid', $courseid);
+	}
+
 }
