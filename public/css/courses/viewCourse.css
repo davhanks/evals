@@ -34,6 +34,12 @@
 	position: relative;
 }
 
+#editSuccess {
+	display: none;
+	position: relative;
+
+}
+
 .close-errors-icon {
 	position: absolute;
 	top: 40%;
@@ -41,5 +47,15 @@
 }
 
 .close-errors-icon:hover{
+	color: #ca2408;
+}
+
+.close-success-icon {
+	position: absolute;
+	top: 40%;
+	right: 2%;
+}
+
+.close-success-icon:hover{
 	color: #ca2408;
 }

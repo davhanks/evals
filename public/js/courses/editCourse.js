@@ -21,6 +21,11 @@ $(function() {
 	        	$('#panel1').slideToggle();
 	        	$('#tab3').removeClass("active");
 	        	$('#tab1').addClass("active");
+
+	        	if($('#editSuccess').is(':hidden')) {
+	        		$('#editSuccess').slideToggle();
+	        	}
+	        	
 	        }else {
 
 	        	// Empty out old errors
@@ -44,7 +49,13 @@ $(function() {
   			
   	// Close the error div if the x is clicked  	
 	$('.close-errors-icon').click(function(){
-		$('#editErrors').slideToggle("slow", "linear", function(){
+		$('#editErrors').slideToggle("fast", "linear", function(){
+			// console.log("Set user interacted function call here");
+		});
+	});	
+
+	$('.close-success-icon').click(function(){
+		$('#editSuccess').slideToggle("fast", "linear", function(){
 			// console.log("Set user interacted function call here");
 		});
 	});	 	

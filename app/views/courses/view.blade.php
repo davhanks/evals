@@ -21,6 +21,9 @@
 			  <li id="tab3"><a href="#"><span class="glyphicon glyphicon-cog"></span> Edit Course</a></li>
 			</ul>
 			<div id="panel1">
+				<div class="alert alert-success" id="editSuccess">
+					<ul><li>Test edited successfully!</li></ul><span class="glyphicon glyphicon-remove-circle close-success-icon"></span>
+				</div>
 				<h3 id="course_name">{{ $course->name }}</h3>
 				<hr>
 				<p id="course_description">{{ $course->description }}</p>

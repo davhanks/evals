@@ -12,7 +12,8 @@
 	</div>
 	@endif
 	<div class="row">
-		<div class="col-md-3 col-md-offset-4">
+		<div>
+			<div id="loginForm">
 			{{ Form::open(array('url'=>'users/signin', 'class'=>'form-signin')) }}
 			    {{ HTML::image('images/login.jpg'); }}
 			 
@@ -20,6 +21,7 @@
 			    {{ Form::password('password', array('class'=>'input-block-level', 'placeholder'=>'Password')) }} <br />
 			    {{ Form::submit('Login', array('class'=>'btn btn-large btn-primary'))}}
 			{{ Form::close() }}
+			</div>
 		</div>
 	</div>
 </div>	

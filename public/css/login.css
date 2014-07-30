@@ -69,3 +69,8 @@ input:focus {
 	font-weight: bold;
 	text-transform: uppercase;
 }
+
+#loginForm {
+	width:400px;
+	margin: 0 auto;
+}
