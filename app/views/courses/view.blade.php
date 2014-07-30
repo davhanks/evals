@@ -8,6 +8,11 @@
 			</div>
 		<h1>User List</h1>
 		<a class="btn btn-success" href="{{ URL::to('tests/' . $course->id . '/new') }}"><span class="glyphicon glyphicon-plus"></span> New Test</a>
+		<ul class="nav nav-tabs" role="tablist">
+		  <li class="active"><a href="#">Home</a></li>
+		  <li><a href="#">Profile</a></li>
+		  <li><a href="#">Messages</a></li>
+		</ul>
 		<table class="table">
 			<thead>
 				<th>Name</th>
