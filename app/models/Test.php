@@ -7,7 +7,7 @@ class Test extends Eloquent {
 	public static $rules = array(
 		'name'=>'required|min:2',
 		'desc'=>'required|min:10',
-		'courseID'=>'alpha_num',
+		'courseID'=>'numeric',
 		'date_due'=>'date'
 	);
 

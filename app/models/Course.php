@@ -7,7 +7,7 @@ class Course extends Eloquent {
 	public static $rules = array(
 		'name'=>'required|min:2',
 		'description'=>'required|min:10',
-		'courseID'=>'alpha_num'
+		'courseID'=>'numeric'
 	);
 
 	public function validate($data) {
