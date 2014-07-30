@@ -23,4 +23,8 @@ class Test extends Eloquent {
 	public function course() {
 		return $this->belongsTo('Course', 'id');
 	}
+
+	public function questions() {
+		return $this->hasMany('Question');
+	}
 }

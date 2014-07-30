@@ -50,7 +50,13 @@ class TestsController extends BaseController {
 			return Redirect::to('courses/' . $test->course_id . '/view')->with('message', 'Test Creation Successful!');
 		}
 
+	}
 
+	public function get_test_view($id) {
+		return View::make('tests.view')
+			->with('title', 'View Test')
+			->with('test', Test::find($id))
+			->with('questions', Question::where('test_id', '=', $id)->get());
 	}
 
 }
