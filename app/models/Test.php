@@ -6,7 +6,9 @@ class Test extends Eloquent {
 
 	public static $rules = array(
 		'name'=>'required|min:2',
-		'bio'=>'required|min:10'
+		'desc'=>'required|min:10',
+		'courseID'=>'alpha_num',
+		'date_due'=>'date'
 	);
 
 	public function validate($data) {
@@ -16,5 +18,9 @@ class Test extends Eloquent {
 
 	public function sanitize($input) {
 		return HTML::entities($input);
+	}
+
+	public function course() {
+		return $this->belongsTo('Course', 'id');
 	}
 }

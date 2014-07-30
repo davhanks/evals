@@ -76,11 +76,13 @@ Route::get('courses/{id}/view', array('as'=>'view_course', 'uses'=>'CoursesContr
 
 //Ajax
 Route::post('courses/switch_active', array('uses'=>'CoursesController@post_switch_active'));
+Route::post('courses/edit', array('uses'=>'CoursesController@post_edit_course'));
 
 // Tests Routes
 Route::get('tests/list', array('as'=>'test_list', 'uses'=>'TestsController@get_test_list'));
 Route::get('tests/{id}/new', array('as'=>'new_test', 'uses'=>'TestsController@get_test_new'))
 	->where('id', '[0-9]+');
+Route::post('tests/create', array('uses'=>'TestsController@post_create_test'));
 
 // Route::post('authors', array('uses'=>'authors@post_index'));
 

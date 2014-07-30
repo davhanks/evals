@@ -9,6 +9,7 @@
 		{{ HTML::style('css/settings.css'); }}
 		{{ HTML::style('css/toggle.css'); }}
 		{{ HTML::style('css/tests/newTest.css'); }}
+		{{ HTML::style('css/courses/viewCourse.css'); }}
 		{{ HTML::script('js/jquery.min.js'); }}
 		{{ HTML::script('js/bootstrap.js'); }}
 		
@@ -74,15 +75,11 @@
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
-
-		@if(Session::has('message'))
-			<div class="alert alert-success">
-				<p>{{ Session::get('message') }}</p>
-			</div>
-		@endif
 			
 		@yield('content')
 		{{ HTML::script('js/weather.js'); }}
 		{{ HTML::script('js/settings/settings.js'); }}
+		{{ HTML::script('js/courses/viewCourse.js'); }}
+		{{ HTML::script('js/courses/editCourse.js'); }}
 	</body>
 </html>

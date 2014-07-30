@@ -6,7 +6,8 @@ class Course extends Eloquent {
 
 	public static $rules = array(
 		'name'=>'required|min:2',
-		'description'=>'required|min:10'
+		'description'=>'required|min:10',
+		'courseID'=>'alpha_num'
 	);
 
 	public function validate($data) {
@@ -20,6 +21,10 @@ class Course extends Eloquent {
 
 	public function user() {
 		return $this->belongsTo('User', 'id');
+	}
+
+	public function tests() {
+		return $this->hasMany('Test');
 	}
 
 	public function is_active() {

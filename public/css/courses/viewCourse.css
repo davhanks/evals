@@ -1,0 +1,45 @@
+#tabs > li {
+	background-color: rgba(255,255,255,0.7);
+}
+.nav-tabs > li.active > a {
+	margin: 0px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+#tabs {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#panel1 {
+	background-color: white;
+	padding: 10px;
+}
+
+#panel2 {
+	background-color: white;
+	padding: 10px;
+	display: none;
+}
+
+#panel3 {
+	background-color: white;
+	padding: 10px;
+	display: none;
+}
+
+#editErrors {
+	display: none;
+	position: relative;
+}
+
+.close-errors-icon {
+	position: absolute;
+	top: 40%;
+	right: 2%;
+}
+
+.close-errors-icon:hover{
+	color: #ca2408;
+}

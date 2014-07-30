@@ -122,7 +122,10 @@ class UsersController extends BaseController {
 			$setting->temp_limit = e($_POST['temp_limit']);
 			$setting->save();
 
-			$data = json_encode(array('success'=>true, 'temp'=>$setting->temp_limit));
+			$data = json_encode(array(
+				'success'=>true, 
+				'temp'=>$setting->temp_limit
+				));
 			return $data;
 		}
 		

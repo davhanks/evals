@@ -26,7 +26,7 @@ class CoursesController extends BaseController {
 	}
 
 	public function get_view_course($id) {
-		return View::make('courses.view')->with('title', 'View Course')->with('course', Course::find($id));
+		return View::make('courses.view')->with('title', 'View Course')->with('course', Course::find($id))->with('tests', Test::where('course_id', '=', $id)->get());
 	}
 
 	public function get_create_course() {
@@ -48,6 +48,33 @@ class CoursesController extends BaseController {
 
 
 			return Redirect::to('courses/list')->with('message', 'Course Created Successfully!');
+		}
+	}
+
+	public function post_edit_course() {
+
+		if(Request::AJAX()) {
+
+			$v = Validator::make(Input::all(), Course::$rules);
+
+			if($v->fails()) {
+
+				return Response::json(array(
+					'success'=>false,
+					'errors'=> $v->getMessageBag()->toArray()
+				), 200);
+			}
+			
+			$course = Course::find(Input::get('courseID'));
+			$course->name = e(Input::get('name'));
+			$course->description = e(Input::get('description'));
+			$course->save();
+
+			return json_encode(array(
+					'success'=>true,
+					'name'=>$course->name,
+					'description'=>$course->description,
+				));
 		}
 	}
 
