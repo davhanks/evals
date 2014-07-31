@@ -3,14 +3,16 @@
 class Question extends Eloquent {
 
 	public static $rules = array(
-		'name'=>'required|min:2',
-		'description'=>'required|min:10',
-		'courseID'=>'numeric'
+		'text'=>'required|min:5',
+		'point_value'=>'numeric'
 	);
 
 	public function test() {
-		$this->belongsTo('Test', 'id');
+		return $this->belongsTo('Test', 'id');
 	}
 
+	public function answers() {
+		return $this->hasMany('Answer');
+	}
 
 }

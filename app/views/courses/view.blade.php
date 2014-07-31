@@ -21,8 +21,9 @@
 			  <li id="tab3"><a href="#"><span class="glyphicon glyphicon-cog"></span> Edit Course</a></li>
 			</ul>
 			<div id="panel1">
-				<div class="alert alert-success" id="editSuccess">
-					<ul><li>Test edited successfully!</li></ul><span class="glyphicon glyphicon-remove-circle close-success-icon"></span>
+				<div class="alert alert-success alert-dismissible" id="editSuccess">
+					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<ul><li>Test edited successfully!</li></ul>
 				</div>
 				<h3 id="course_name">{{ $course->name }}</h3>
 				<hr>
@@ -60,8 +61,9 @@
 				
 			</div>
 				{{ Form::open(array('url'=>'/courses/edit', 'id'=>'edit_course')); }}
-				<div class="alert alert-danger" id="editErrors">
-					<ul id="errorResponse"></ul><span class="glyphicon glyphicon-remove-circle close-errors-icon"></span>
+				<div class="alert alert-danger alert-dismissible" id="editErrors">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<ul id="errorResponse"></ul>
 				</div>
 				{{ Form::input('hidden', 'courseID', $course->id); }}
 				{{ Form::input('text', 'name', $course->name, array('placeholder'=>'Course Name', 'class'=>'form-control')); }}<br />
