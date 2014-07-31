@@ -86,6 +86,10 @@ Route::post('tests/create', array('uses'=>'TestsController@post_create_test'));
 Route::get('tests/{id}/view', array('uses'=>'TestsController@get_test_view'))
 	->where('id', '[0-9]+');
 
+
+// Questions Routes
+	Route::get('questions/{id}/new', array('uses'=>'new_question', 'uses'=>'QuestionController@get_question_new');
+
 // Route::post('authors', array('uses'=>'authors@post_index'));
 
 // Route::get('authors', 'Authors@index');
