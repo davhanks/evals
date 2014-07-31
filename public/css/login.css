@@ -24,12 +24,47 @@ input {
 	padding-left: 7px;
 }
 
+@media screen and (device-aspect-ratio: 40/71) {
+	#loginForm {
+		width:610px;
+		margin: 0 auto;
+	}
+
+	input {
+		width: 600px;
+		height: 100px;
+		background-color: rgba(255,255,255,0.85);
+		font-size: 2.1em;
+		border-width: 0px;
+		padding-left: 7px;
+	}
+
+	::-webkit-input-placeholder {
+   		font-size: 2.1em;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+     font-size: 2.1em;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    font-size: 2.1em;
+}
+
+:-ms-input-placeholder {  
+   font-size: 2.1em;  
+}
+}
+
+#loginForm > .alert {
+	width: 378px;
+}
+
 input:focus {
 	
 	border-left-width: 7px;
 	border-color: #428bca;
 	padding-left: 0px;
-	color: #428bca;
 }
 
 ::-webkit-input-placeholder {
@@ -46,10 +81,6 @@ input:focus {
 
 :-ms-input-placeholder {  
    font-size: 1.1em;  
-}
-
-.row {
-	background-color: rgba(255,255,255, 0);
 }
 
 .login_container {

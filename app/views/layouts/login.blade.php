@@ -38,13 +38,6 @@
 		  </div><!-- /.container-fluid -->
 		</nav>
 
-
-
-		@if(Session::has('message'))
-			<div class="alert alert-danger">
-				<p>{{ Session::get('message') }}</p>
-			</div>
-		@endif
 		@yield('content')
 	</body>
 </html>
