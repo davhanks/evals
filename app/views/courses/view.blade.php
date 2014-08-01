@@ -49,7 +49,29 @@
 						<td>{{ $test->number_of_questions }}</td>
 						<td>{{ $test->total_points }}</td>
 						<td>{{ $test->date_due }}</td>
-						<td>active placeholder</td>
+						<td>
+							<script>
+								$(function(){
+									$('#cmn-toggle-{{$test->id}}-active').click(function(e){
+						  			// e.preventDefault();
+							  			$.post('/tests/switch_test_active', {testID: '{{$test->id}}'},function(data){
+							  				$('#response').html(data);
+							  			});
+						  			});
+								});
+							</script>
+							@if($test->is_active())
+								<div class="switch">
+								  <input id="cmn-toggle-{{$test->id}}-active" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
+								  <label for="cmn-toggle-{{$test->id}}-active"></label>
+								</div>
+							@else
+								<div class="switch">
+								  <input id="cmn-toggle-{{$test->id}}-active" class="cmn-toggle cmn-toggle-round" type="checkbox" unchecked>
+								  <label for="cmn-toggle-{{$test->id}}-active"></label>
+								</div>
+							@endif
+						</td>
 						<td><a href="{{ URL::to('tests/' . $test->id . '/view') }}" class="btn btn-primary"><span class="glyphicon glyphicon-info-sign"></span> View</a></td>
 					</tr>
 					@endforeach
@@ -72,7 +94,7 @@
 				{{ Form::close(); }}
 			</div>
 		</div>
-		
+		<a href="{{ URL::to('courses/list') }}" class="btn btn-danger"><span class="glyphicon glyphicon-arrow-left"></span> Back to Course List</a>
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 	</div>
 </div>

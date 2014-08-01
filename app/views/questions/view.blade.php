@@ -11,36 +11,35 @@
 			<p>{{ Session::get('message') }}</p>
 		</div>
 		@endif
-		<h1>View Test</h1>
+		<h1>View Question</h1>
 		
 		
 		<div id="tabs">
 			<ul class="nav nav-tabs" role="tablist">
 			  <li id="tab1" class="active"><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
-			  <li id="tab2"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Questions</a></li>
-			  <li id="tab3"><a href="#"><span class="glyphicon glyphicon-cog"></span> Edit Test</a></li>
+			  <li id="tab2"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Answers</a></li>
+			  <li id="tab3"><a href="#"><span class="glyphicon glyphicon-cog"></span> Edit Question</a></li>
 			</ul>
 			<div id="panel1">
-				<h3 id="course_name">{{ $test->name }}</h3>
+				<h3 id="course_name">Question #{{ $question->question_number }}</h3>
 				<hr>
-				<p id="course_description">{{ $test->description }}</p>
+				<p id="course_description">Text: {{ $question->text }}</p>
+				<p id="points">Point Value: {{ $question->point_value }}</p>
 			</div>
 			<div id="panel2">
-				<a class="btn btn-success" href="{{ URL::to('questions/' . $test->id . '/new') }}"><span class="glyphicon glyphicon-plus"></span> New Question</a>
+				<a class="btn btn-success" href="{{ URL::to('answers/' . $question->id . '/new') }}"><span class="glyphicon glyphicon-plus"></span> New Answer</a>
 				<table class="table">
 				<thead>
-					<th>#</th>
 					<th>Text</th>
 					<th>Point Value</th>
 					<th>Active</th>
 					<th>Action</th>
 				</thead>
 				<tbody>
-					@foreach($questions as $question)
+					@foreach($answers as $answer)
 					<tr>
-						<td>{{ $question->question_number }}</td>
-						<td>{{ $question->text }}</td>
-						<td>{{ $question->point_value }}</td>
+						<td>{{ $answer->text }}</td>
+						<td>{{ $answer->point_value }}</td>
 						<td>
 							<script>
 								$(function(){
@@ -74,19 +73,19 @@
 			<div class="errors">
 				
 			</div>
-				{{ Form::open(array('url'=>'/tests/edit', 'id'=>'edit_test')); }}
+				{{ Form::open(array('url'=>'/questions/edit', 'id'=>'edit_test')); }}
 				<div class="alert alert-danger" id="editErrors">
 					<ul id="errorResponse"></ul><span class="glyphicon glyphicon-remove-circle close-errors-icon"></span>
 				</div>
-				{{ Form::input('hidden', 'courseID', $test->id); }}
-				{{ Form::input('text', 'name', $test->name, array('placeholder'=>'Course Name', 'class'=>'form-control')); }}<br />
-				{{ Form::textarea('description', $test->description, array('placeholder'=>'Course Description', 'class'=>'form-control'));  }}<br />
+				{{ Form::input('hidden', 'courseID', $question->id); }}
+				{{ Form::input('text', 'name', $question->name, array('placeholder'=>'NOT WORKING', 'class'=>'form-control')); }}<br />
+				{{ Form::textarea('description', $question->description, array('placeholder'=>'Course Description', 'class'=>'form-control'));  }}<br />
 				{{ Form::submit('Save Changes', array('class'=>'btn btn-primary')); }}
 				{{ Form::close(); }}
 			</div>
 		</div>
 		
-		<a href="{{ URL::to('courses/' . $test->course_id . '/view') }}" class="btn btn-danger"><span class="glyphicon glyphicon-arrow-left"></span> Back to Course</a> 
+		<a href="{{ URL::to('tests/' . $question->test_id . '/view') }}" class="btn btn-danger"><span class="glyphicon glyphicon-arrow-left"></span> Back to Test</a> 
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 	</div>
 </div>

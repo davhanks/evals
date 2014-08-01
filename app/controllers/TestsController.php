@@ -28,7 +28,9 @@ class TestsController extends BaseController {
 	}
 
 	public function get_test_new($courseid) {
-		return View::make('tests.new')->with('title', 'Create New Test')->with('courseid', $courseid);
+		return View::make('tests.new')
+			->with('title', 'Create New Test')
+			->with('courseid', $courseid);
 	}
 
 	public function post_create_test() {
@@ -58,5 +60,25 @@ class TestsController extends BaseController {
 			->with('test', Test::find($id))
 			->with('questions', Question::where('test_id', '=', $id)->get());
 	}
+
+	public function post_switch_active() {
+
+		if(Request::AJAX()){
+			$testID = $_POST['testID'];
+			$test = Test::find($testID);
+			if($test->is_active()) {
+				$test->is_active = '0';
+				$test->save();
+				return $test->name . ' is now Inactive';
+			} else {
+				$test->is_active = '1';
+				$test->save();
+				return $test->name . ' is now Active';
+			}
+		}
+	}
+
+
+
 
 }

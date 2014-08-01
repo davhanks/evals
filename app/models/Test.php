@@ -27,4 +27,13 @@ class Test extends Eloquent {
 	public function questions() {
 		return $this->hasMany('Question');
 	}
+
+	public function is_active() {
+
+		if($this->is_active == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

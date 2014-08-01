@@ -86,9 +86,19 @@ Route::post('tests/create', array('uses'=>'TestsController@post_create_test'));
 Route::get('tests/{id}/view', array('uses'=>'TestsController@get_test_view'))
 	->where('id', '[0-9]+');
 
+//Ajax
+Route::post('tests/switch_test_active', array('uses'=>'TestsController@post_switch_active'));
+
 
 // Questions Routes
-	Route::get('questions/{id}/new', array('uses'=>'new_question', 'uses'=>'QuestionController@get_question_new');
+Route::get('questions/{id}/new', array('as'=>'new_question', 'uses'=>'QuestionsController@get_question_new'))
+	->where('id', '[0-9]+');
+Route::post('questions/create', array('uses'=>'QuestionsController@post_question_create'));
+Route::get('questions/{id}/view', array('uses'=>'QuestionsController@get_question_view'))
+	->where('id', '[0-9]+');
+
+//Ajax
+Route::post('questions/switch_question_active', array('uses'=>'QuestionsController@post_switch_active'));
 
 // Route::post('authors', array('uses'=>'authors@post_index'));
 
