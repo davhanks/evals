@@ -18,6 +18,7 @@
 		</p>
 		<p>Member since: {{ $user->created_at->format('M-d-Y'); }}</p>
 
+		<a href="{{ URL::to('users/signup') }}" class="btn btn-danger"><span class="glyphicon glyphicon-pencil"></span> Course Sign-up</a>
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 	</div>
 </div>

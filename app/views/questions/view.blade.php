@@ -35,7 +35,7 @@
 				<table class="table">
 				<thead>
 					<th>Text</th>
-					<th>Point Value</th>
+					<th>Is Correct</th>
 					<th>Active</th>
 					<th>Action</th>
 				</thead>
@@ -43,27 +43,33 @@
 					@foreach($answers as $answer)
 					<tr>
 						<td>{{ $answer->text }}</td>
-						<td>{{ $answer->point_value }}</td>
+						<td>
+						@if($answer->is_correct())
+							<span class="label label-success">Yes</span>
+						@else
+							<span class="label label-danger">No</span>
+						@endif
+						</td>
 						<td>
 							<script>
 								$(function(){
-									$('#cmn-toggle-{{$question->id}}-active').click(function(e){
+									$('#cmn-toggle-{{$answer->id}}-active').click(function(e){
 						  			// e.preventDefault();
-							  			$.post('/questions/switch_question_active', {questionID: '{{$question->id}}'},function(data){
+							  			$.post('/answers/switch_answer_active', {questionID: '{{$question->id}}'},function(data){
 							  				$('#response').html(data);
 							  			});
 						  			});
 								});
 							</script>
-							@if($question->is_active())
+							@if($answer->is_active())
 								<div class="switch">
-								  <input id="cmn-toggle-{{$question->id}}-active" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
-								  <label for="cmn-toggle-{{$question->id}}-active"></label>
+								  <input id="cmn-toggle-{{$answer->id}}-active" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
+								  <label for="cmn-toggle-{{$answer->id}}-active"></label>
 								</div>
 							@else
 								<div class="switch">
-								  <input id="cmn-toggle-{{$question->id}}-active" class="cmn-toggle cmn-toggle-round" type="checkbox" unchecked>
-								  <label for="cmn-toggle-{{$question->id}}-active"></label>
+								  <input id="cmn-toggle-{{$answer->id}}-active" class="cmn-toggle cmn-toggle-round" type="checkbox" unchecked>
+								  <label for="cmn-toggle-{{$answer->id}}-active"></label>
 								</div>
 							@endif
 						</td>
@@ -95,4 +101,5 @@
 	</div>
 </div>
 {{ HTML::script('js/questions/editQuestion.js'); }}
+{{ HTML::script('js/answers/isCorrect.js'); }}
 @stop

@@ -2,6 +2,10 @@
 
 class QuestionsController extends BaseController {
 
+	public function __construct() {
+
+	}
+
 	public function get_question_new($testID) {
 		return View::make('questions.new')
 		->with('title', 'New Question')

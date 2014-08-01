@@ -26,7 +26,10 @@ class CoursesController extends BaseController {
 	}
 
 	public function get_view_course($id) {
-		return View::make('courses.view')->with('title', 'View Course')->with('course', Course::find($id))->with('tests', Test::where('course_id', '=', $id)->get());
+		return View::make('courses.view')
+			->with('title', 'View Course')
+			->with('course', Course::find($id))
+			->with('tests', Test::where('course_id', '=', $id)->orderBy('date_due')->get());
 	}
 
 	public function get_create_course() {

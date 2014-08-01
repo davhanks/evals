@@ -102,6 +102,11 @@ Route::get('questions/{id}/view', array('uses'=>'QuestionsController@get_questio
 Route::post('questions/switch_question_active', array('uses'=>'QuestionsController@post_switch_active'));
 Route::post('questions/edit', array('uses'=>'QuestionsController@post_edit_question'));
 
+
+// Answers Routes
+Route::get('answers/{id}/new', array('as'=>'new_answer', 'uses'=>'AnswersController@get_answer_new'))
+	->where('id', '[0-9]+');
+Route::post('answers/create', array('uses'=>'AnswersController@post_answer_create'));
 // Route::post('authors', array('uses'=>'authors@post_index'));
 
 // Route::get('authors', 'Authors@index');
