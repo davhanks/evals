@@ -88,7 +88,7 @@ Route::get('tests/{id}/view', array('uses'=>'TestsController@get_test_view'))
 
 
 // Questions Routes
-	Route::get('questions/{id}/new', array('uses'=>'new_question', 'uses'=>'QuestionController@get_question_new');
+	Route::get('questions/{id}/new', array('uses'=>'new_question', 'uses'=>'QuestionController@get_question_new'));
 
 // Route::post('authors', array('uses'=>'authors@post_index'));
 
