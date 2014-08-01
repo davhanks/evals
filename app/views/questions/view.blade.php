@@ -21,9 +21,13 @@
 			  <li id="tab3"><a href="#"><span class="glyphicon glyphicon-cog"></span> Edit Question</a></li>
 			</ul>
 			<div id="panel1">
-				<h3 id="course_name">Question #{{ $question->question_number }}</h3>
+				<div class="alert alert-success alert-dismissible" id="editSuccess">
+					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<ul><li>Question edited successfully!</li></ul>
+				</div>
+				<h3 id="question_num">Question #{{ $question->question_number }}</h3>
 				<hr>
-				<p id="course_description">Text: {{ $question->text }}</p>
+				<p id="question_text">Text: {{ $question->text }}</p>
 				<p id="points">Point Value: {{ $question->point_value }}</p>
 			</div>
 			<div id="panel2">
@@ -73,13 +77,14 @@
 			<div class="errors">
 				
 			</div>
-				{{ Form::open(array('url'=>'/questions/edit', 'id'=>'edit_test')); }}
+				{{ Form::open(array('url'=>'/questions/edit', 'id'=>'edit_question')); }}
 				<div class="alert alert-danger" id="editErrors">
 					<ul id="errorResponse"></ul><span class="glyphicon glyphicon-remove-circle close-errors-icon"></span>
 				</div>
-				{{ Form::input('hidden', 'courseID', $question->id); }}
-				{{ Form::input('text', 'name', $question->name, array('placeholder'=>'NOT WORKING', 'class'=>'form-control')); }}<br />
-				{{ Form::textarea('description', $question->description, array('placeholder'=>'Course Description', 'class'=>'form-control'));  }}<br />
+				{{ Form::input('hidden', 'questionID', $question->id); }}
+				{{ Form::textarea('text', $question->text, array('placeholder'=>'Question Text', 'class'=>'form-control'));  }}<br />
+				{{ Form::input('text', 'point_value', $question->point_value, array('placeholder'=>'Point Value', 'class'=>'form-control')); }}<br />
+				
 				{{ Form::submit('Save Changes', array('class'=>'btn btn-primary')); }}
 				{{ Form::close(); }}
 			</div>
@@ -89,4 +94,5 @@
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 	</div>
 </div>
+{{ HTML::script('js/questions/editQuestion.js'); }}
 @stop

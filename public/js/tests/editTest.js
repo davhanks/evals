@@ -1,10 +1,10 @@
 $(function() {
 
-	$("#edit_course").submit(function(event){
+	$("#edit_test").submit(function(event){
 		event.preventDefault();
 
 		$.ajax({
-	    url: "/courses/edit",
+	    url: "/tests/edit",
 	    type: "POST",
 	    data: $(this).serialize(),
 	    cache: false,

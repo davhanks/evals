@@ -78,6 +78,34 @@ class TestsController extends BaseController {
 		}
 	}
 
+	public function post_edit_test() {
+
+		if(Request::AJAX()) {
+
+			$v = Validator::make(Input::all(), Test::$rules);
+
+			if($v->fails()) {
+
+				return Response::json(array(
+					'success'=>false,
+					'errors'=> $v->getMessageBag()->toArray()
+				), 200);
+			}
+			
+			$test = Test::find(Input::get('testID'));
+			$test->name = e(Input::get('name'));
+			$test->description = e(Input::get('description'));
+			$test->date_due = new DateTime(Input::get('date_due'));
+			$test->save();
+
+			return json_encode(array(
+					'success'=>true,
+					'name'=>$test->name,
+					'description'=>$test->description,
+				));
+		}
+	}
+
 
 
 

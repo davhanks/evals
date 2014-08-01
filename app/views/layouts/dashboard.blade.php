@@ -80,6 +80,5 @@
 		{{ HTML::script('js/weather.js'); }}
 		{{ HTML::script('js/settings/settings.js'); }}
 		{{ HTML::script('js/courses/viewCourse.js'); }}
-		{{ HTML::script('js/courses/editCourse.js'); }}
 	</body>
 </html>

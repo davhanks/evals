@@ -23,7 +23,7 @@
 			<div id="panel1">
 				<div class="alert alert-success alert-dismissible" id="editSuccess">
 					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<ul><li>Test edited successfully!</li></ul>
+					<ul><li>Course edited successfully!</li></ul>
 				</div>
 				<h3 id="course_name">{{ $course->name }}</h3>
 				<hr>
@@ -120,4 +120,5 @@
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 	</div>
 </div>
+{{ HTML::script('js/courses/editCourse.js'); }}
 @stop

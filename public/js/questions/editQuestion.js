@@ -1,18 +1,19 @@
 $(function() {
 
-	$("#edit_course").submit(function(event){
+	$("#edit_question").submit(function(event){
 		event.preventDefault();
 
 		$.ajax({
-	    url: "/courses/edit",
+	    url: "/questions/edit",
 	    type: "POST",
 	    data: $(this).serialize(),
 	    cache: false,
 	    dataType: "json",
 		}).done(function(data) {
 			if(data["success"]) {
-	    	    $('#course_name').html(data["name"]);
-	    	    $('#course_description').html(data["description"]);
+	    	    $('#question_text').html(data["text"]);
+	    	    $('#points').html(data["point_value"]);
+
 	    	    if($('#editErrors').is(":visible")) {
 	        		$('#editErrors').slideToggle("slow");
 	        	}

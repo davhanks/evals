@@ -88,6 +88,7 @@ Route::get('tests/{id}/view', array('uses'=>'TestsController@get_test_view'))
 
 //Ajax
 Route::post('tests/switch_test_active', array('uses'=>'TestsController@post_switch_active'));
+Route::post('tests/edit', array('uses'=>'TestsController@post_edit_test'));
 
 
 // Questions Routes
@@ -99,6 +100,7 @@ Route::get('questions/{id}/view', array('uses'=>'QuestionsController@get_questio
 
 //Ajax
 Route::post('questions/switch_question_active', array('uses'=>'QuestionsController@post_switch_active'));
+Route::post('questions/edit', array('uses'=>'QuestionsController@post_edit_question'));
 
 // Route::post('authors', array('uses'=>'authors@post_index'));
 

@@ -63,6 +63,31 @@ class QuestionsController extends BaseController {
 		}
 	}
 
+	public function post_edit_question() {
 
+		if(Request::AJAX()) {
+
+			$v = Validator::make(Input::all(), Question::$rules);
+
+			if($v->fails()) {
+				return Response::json(array(
+					'success'=>false,
+					'errors'=>$v-getMessageBag()->toArray()
+					), 200);
+			} else {
+
+				$question = Question::find(Input::get('questionID'));
+				$question->text = e(Input::get('text'));
+				$question->point_value = e(Input::get('point_value'));
+				$question->save();
+
+				return Response::json(array(
+					'success'=>true,
+					'text'=>$question->text,
+					'point_value'=>$question->point_value,
+					), 200);
+			}
+		}
+	}
 
 }
