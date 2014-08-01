@@ -45,7 +45,29 @@
 					@foreach($tests as $test)
 					<tr>
 						<td>{{ $test->name }}</td>
-						<td>description</td>
+						<td>
+							<button class="btn btn-info" data-toggle="modal" data-target="#myModal-{{ $test->id }}">
+								<span class="glyphicon glyphicon-info-sign"></span> Description
+							</button>
+
+							<div class="modal fade" id="myModal-{{ $test->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							        <h4 class="modal-title" id="myModalLabel">{{ $test->name }}</h4>
+							      </div>
+							      <div class="modal-body">
+							      	{{ $test->description }}
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+
+						</td>
 						<td>{{ $test->number_of_questions }}</td>
 						<td>{{ $test->total_points }}</td>
 						<td>{{ $test->date_due }}</td>
@@ -72,7 +94,7 @@
 								</div>
 							@endif
 						</td>
-						<td><a href="{{ URL::to('tests/' . $test->id . '/view') }}" class="btn btn-primary"><span class="glyphicon glyphicon-info-sign"></span> View</a></td>
+						<td><a href="{{ URL::to('tests/' . $test->id . '/view') }}" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> View</a></td>
 					</tr>
 					@endforeach
 				</tbody>
