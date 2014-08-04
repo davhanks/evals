@@ -12,22 +12,22 @@
 					<th>Description</th>
 					<th>Signup Id</th>
 					<th>Created At</th>
+					<th>Updated At</th>
 					<th>Instructor</th>
 					<th>Active</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-			@foreach ($courses as $course)
+			@foreach ($users as $user)
+				@foreach ($user->courses as $course)
 				<tr>
 					<td>{{ $course->name }}</td>
-					<td class="relative">
-						<a id="ajax-id-{{ $course->id }}" class="description">Description</a>
-						<div id="ajax-id-{{ $course->id }}-decription" class="description-hoverbox alert alert-info">{{ $course->description }}</div>
-					</td>
+					<td>{{ $course->description }}</td>
 					<td>{{ $course->signup_id }}</td>
 					<td>{{ $course->created_at }}</td>
-					<td>{{ $course->user->first_name . ' ' . $course->user->last_name}}</td>
+					<td>{{ $course->updated_at }}</td>
+					<td>{{ $user->first_name . ' ' . $user->last_name }}</td>
 					<td>
 						<script>
 							$(function(){
@@ -53,6 +53,7 @@
 					</td>
 					<td><a href="{{ URL::to('courses/'. $course->id . '/view') }}" class="btn btn-primary"><span class="glyphicon glyphicon-info-sign"></span> View</a></td>
 				</tr>
+				@endforeach
 			@endforeach
 			</tbody>
 		</table>

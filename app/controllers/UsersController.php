@@ -149,25 +149,25 @@ class UsersController extends BaseController {
 				), 200);
 			}
 
-			// $course = Course::where('signup_id', '=', Input::get('signup_id'))->first();
-			// // $course->users()->attach(Auth::user()->id);
-			// $courses = User::find(Auth::user()->id)->manyCourses;
+			$course = Course::where('signup_id', '=', Input::get('signup_id'))->first();
+			// $course->users()->attach(Auth::user()->id);
+			$courses = User::find(Auth::user()->id)->enrollments;
 
-			// $add = true;
-			// foreach($courses as $c) {
-			// 	if($c->id == $course->id) {
-			// 		$add = false;
-			// 	}
-			// }
+			$add = true;
+			foreach($courses as $c) {
+				if($c->id == $course->id) {
+					$add = false;
+				}
+			}
 
-			// if($add) {
-			// 	// $course->users()->attach(Auth::user()->id);
-			// }
+			if($add) {
+				$course->users()->attach(Auth::user()->id);
+			}
 
 			return json_encode(array(
 				'success'=>true,
 				'courses'=>$courses,
-				// 'add'=>$add
+				'add'=>$add
 			));
 
 			

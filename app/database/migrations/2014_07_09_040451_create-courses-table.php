@@ -18,13 +18,13 @@ class CreateCoursesTable extends Migration {
 			$table->text('description');
 			$table->timestamps();
 			$table->boolean('is_active');
-			$table->integer('instructor_id')->unsigned();
+			$table->integer('user_id')->unsigned();
 			$table->string('signup_id');
 		});
 		
 
 		Schema::table('courses', function($table) {
-			$table->foreign('instructor_id')->references('id')->on('users');
+			$table->foreign('user_id')->references('id')->on('users');
 		});
 	}
 

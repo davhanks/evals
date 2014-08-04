@@ -43,7 +43,11 @@
 			</div>
 			<div id="panel3">
 				{{ Form::open(array('URL'=>'/users/signup', 'id'=>'signup')); }}
-				{{ Form::Input('text', 'signup', null, array('class'=>'form-control', 'placeholder'=>'Sign-up ID')) }}
+				<div class="alert alert-danger alert-dismissible" id="editErrors">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<ul id="errorResponse"></ul>
+				</div>
+				{{ Form::Input('text', 'signup_id', null, array('class'=>'form-control', 'placeholder'=>'Sign-up ID')) }}
 				{{Form::button('<span class="glyphicon glyphicon-pencil"></span> Sign-up', array('type' => 'submit', 'class' => 'btn btn-danger')) }}
 				{{ Form::close(); }}
 			</div>

@@ -55,8 +55,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function settings() {
 		return $this->hasOne('Setting');
 	}
-	public function erollments() {
-		return $this->belongsToMany('Course', 'enrollments', 'student_id', 'course_id');
+	public function enrollments() {
+		return $this->belongsToMany('Course', 'enrollments');
 	}
 
 	use UserTrait, RemindableTrait;

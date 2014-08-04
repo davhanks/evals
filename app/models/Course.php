@@ -23,6 +23,10 @@ class Course extends Eloquent {
 		return $this->belongsTo('User', 'id');
 	}
 
+	public function users() {
+		return $this->belongsToMany('User', 'enrollments');
+	}
+
 	public function tests() {
 		return $this->hasMany('Test');
 	}

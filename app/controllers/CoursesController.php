@@ -15,7 +15,7 @@ class CoursesController extends BaseController {
 	public function get_course_list() {
 		if(Auth::user()->is_superuser == '1'){
 			return View::make('courses.list')->with('title', 'Course List')
-				->with('courses', Course::with('user')->get());
+				->with('users', User::with('courses')->get());
 		} elseif(Auth::user()->is_staff == '1'){
 			return View::make('courses.list')->with('title', 'Course List')
 				->with('courses', Course::where('instructor_id', '=', Auth::user()->id)->get());
@@ -46,7 +46,7 @@ class CoursesController extends BaseController {
 			$course->name = $course->sanitize(Input::get('name'));
 			$course->description = $course->sanitize(Input::get('description'));
 			$course->is_active = '1';
-			$course->instructor_id = Auth::user()->id;
+			$course->user_id = Auth::user()->id;
 			$course->signup_id = uniqid();
 			$course->save();
 
