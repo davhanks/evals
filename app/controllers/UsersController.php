@@ -138,15 +138,39 @@ class UsersController extends BaseController {
 
 	public function post_course_sign_up() {
 
-		if(Request::AJAX) {
-			$v = Validator::make(Input::all(), array('signup'=>'required|alpha_num'));
+		if(Request::AJAX()) {
+			$v = Validator::make(Input::all(), User::$signup);
 
 			if($v->fails()) {
+
 				return Response::json(array(
-						'success'=>false,
-						'errors'=>getMessageBag()->toArray()
-					), 200);
+					'success'=>false,
+					'errors'=> $v->getMessageBag()->toArray()
+				), 200);
 			}
+
+			// $course = Course::where('signup_id', '=', Input::get('signup_id'))->first();
+			// // $course->users()->attach(Auth::user()->id);
+			// $courses = User::find(Auth::user()->id)->manyCourses;
+
+			// $add = true;
+			// foreach($courses as $c) {
+			// 	if($c->id == $course->id) {
+			// 		$add = false;
+			// 	}
+			// }
+
+			// if($add) {
+			// 	// $course->users()->attach(Auth::user()->id);
+			// }
+
+			return json_encode(array(
+				'success'=>true,
+				'courses'=>$courses,
+				// 'add'=>$add
+			));
+
+			
 		}
 	}
 

@@ -16,6 +16,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	    'password_confirmation'=>'required|alpha_num|between:6,20'
     );
 
+    public static $signup = array(
+    	'signup_id'=>'required|alpha_num'
+    );
+
     public function sanitize($input) {
 		return HTML::entities($input);
 	}
@@ -50,6 +54,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function settings() {
 		return $this->hasOne('Setting');
+	}
+	public function erollments() {
+		return $this->belongsToMany('Course', 'enrollments', 'student_id', 'course_id');
 	}
 
 	use UserTrait, RemindableTrait;

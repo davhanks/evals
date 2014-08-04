@@ -42,22 +42,17 @@
 				</table>
 			</div>
 			<div id="panel3">
-				{{ Form::open(); }}
+				{{ Form::open(array('URL'=>'/users/signup', 'id'=>'signup')); }}
 				{{ Form::Input('text', 'signup', null, array('class'=>'form-control', 'placeholder'=>'Sign-up ID')) }}
 				{{Form::button('<span class="glyphicon glyphicon-pencil"></span> Sign-up', array('type' => 'submit', 'class' => 'btn btn-danger')) }}
 				{{ Form::close(); }}
 			</div>
 		</div>
-
-
-
-
-
-
 		
 
 		<a href="{{ URL::to('users/signup') }}" class="btn btn-danger"><span class="glyphicon glyphicon-pencil"></span> Course Sign-up</a>
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 	</div>
 </div>
+{{ HTML::script('js/users/signup.js') }}
 @stop

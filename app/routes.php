@@ -64,6 +64,7 @@ Route::post('users/switch_active', array('uses'=>'UsersController@post_switch_ac
 Route::post('users/switch_staff', array('uses'=>'UsersController@post_switch_staff'));
 Route::post('users/switch_superuser', array('uses'=>'UsersController@post_switch_superuser'));
 Route::post('users/change_temp_limit', array('uses'=>'UsersController@post_change_temp_limit'));
+Route::post('users/signup', array('uses'=>'UsersController@post_course_sign_up'));
 
 
 // Courses Routes
