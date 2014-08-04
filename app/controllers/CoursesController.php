@@ -18,7 +18,7 @@ class CoursesController extends BaseController {
 				->with('users', User::with('courses')->get());
 		} elseif(Auth::user()->is_staff == '1'){
 			return View::make('courses.list')->with('title', 'Course List')
-				->with('courses', Course::where('instructor_id', '=', Auth::user()->id)->get());
+				->with('users', User::with('courses')->where('id', '=', Auth::user()->id)->get());
 		} else{
 			return Redirect::to('users/dashboard')->with('message', 'Permission to view denied');
 		}
