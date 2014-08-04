@@ -87,3 +87,7 @@ body {
 	position: relative;
 }
 
+form > button {
+	margin-top: 5px;
+}
+

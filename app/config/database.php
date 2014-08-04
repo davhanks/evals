@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'evals',
+			'database'  => 'evals_test',
 			'username'  => 'root',
 			'password'  => '7live777strong77',
 			'charset'   => 'utf8',

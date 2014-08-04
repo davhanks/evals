@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration {
 			$table->timestamps();
 			$table->boolean('is_active');
 			$table->integer('instructor_id')->unsigned();
+			$table->string('signup_id');
 		});
 		
 

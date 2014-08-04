@@ -42,7 +42,10 @@
 				</table>
 			</div>
 			<div id="panel3">
-				
+				{{ Form::open(); }}
+				{{ Form::Input('text', 'signup', null, array('class'=>'form-control', 'placeholder'=>'Sign-up ID')) }}
+				{{Form::button('<span class="glyphicon glyphicon-pencil"></span> Sign-up', array('type' => 'submit', 'class' => 'btn btn-danger')) }}
+				{{ Form::close(); }}
 			</div>
 		</div>
 

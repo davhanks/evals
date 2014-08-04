@@ -131,13 +131,24 @@ class UsersController extends BaseController {
 		
 	}
 
-
-
 	public function get_logout() {
 		Auth::logout();
 		return Redirect::to('users/login')->with('message', 'You have been logged out');
 	}
 
+	public function post_course_sign_up() {
+
+		if(Request::AJAX) {
+			$v = Validator::make(Input::all(), array('signup'=>'required|alpha_num'));
+
+			if($v->fails()) {
+				return Response::json(array(
+						'success'=>false,
+						'errors'=>getMessageBag()->toArray()
+					), 200);
+			}
+		}
+	}
 
 	//Controller functions for changing permissions of a user
 	public function post_switch_active() {

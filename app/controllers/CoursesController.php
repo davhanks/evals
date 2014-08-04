@@ -47,8 +47,8 @@ class CoursesController extends BaseController {
 			$course->description = $course->sanitize(Input::get('description'));
 			$course->is_active = '1';
 			$course->instructor_id = Auth::user()->id;
+			$course->signup_id = uniqid();
 			$course->save();
-
 
 			return Redirect::to('courses/list')->with('message', 'Course Created Successfully!');
 		}

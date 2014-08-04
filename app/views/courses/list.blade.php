@@ -10,6 +10,7 @@
 				<tr>
 					<th>Name</th>
 					<th>Description</th>
+					<th>Signup Id</th>
 					<th>Created At</th>
 					<th>Instructor</th>
 					<th>Active</th>
@@ -24,6 +25,7 @@
 						<a id="ajax-id-{{ $course->id }}" class="description">Description</a>
 						<div id="ajax-id-{{ $course->id }}-decription" class="description-hoverbox alert alert-info">{{ $course->description }}</div>
 					</td>
+					<td>{{ $course->signup_id }}</td>
 					<td>{{ $course->created_at }}</td>
 					<td>{{ $course->user->first_name . ' ' . $course->user->last_name}}</td>
 					<td>
