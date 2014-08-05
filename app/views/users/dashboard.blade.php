@@ -17,12 +17,12 @@
 			</ul>
 			<div id="panel1">
 				<p>{{ $user->first_name }} {{ $user->last_name }}</p>
-				<p>Roles: 
+				<p>Roles:
 				@if($user->is_superuser())
-					<span class="label label-primary"><i class="fa fa-user"></i> Superuser</span>, 
+					<span class="label label-primary"><i class="fa fa-user"></i> Superuser</span>,
 				@endif
 				@if($user->is_staff())
-					<span class="label label-success">Staff</span> 
+					<span class="label label-success">Staff</span>
 				@endif
 				</p>
 				<p>Member since: {{ $user->created_at->format('M-d-Y'); }}</p>
@@ -68,7 +68,7 @@
 								    </div>
 								</div>
 							</td>
-							<td><a class="btn btn-primary" href="">View Tests</a></td>
+							<td><a class="btn btn-primary" href="{{ URL::to('tests/' . $course->id . '/list') }}">View Tests</a></td>
 						</tr>
 						@endforeach
 					</tbody>
@@ -77,7 +77,7 @@
 			<div id="panel3">
 				{{ Form::open(array('URL'=>'/users/signup', 'id'=>'signup')); }}
 				<div class="alert alert-danger alert-dismissible" id="editErrors">
-				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 					<ul id="errorResponse"></ul>
 				</div>
 				{{ Form::Input('text', 'signup_id', null, array('class'=>'form-control', 'placeholder'=>'Sign-up ID')) }}

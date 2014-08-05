@@ -12,8 +12,7 @@
 		</div>
 		@endif
 		<h1>View Test</h1>
-		
-		
+
 		<div id="tabs">
 			<ul class="nav nav-tabs" role="tablist">
 			  <li id="tab1" class="active"><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
@@ -76,7 +75,7 @@
 			</div>
 			<div id="panel3">
 			<div class="errors">
-				
+
 			</div>
 				{{ Form::open(array('url'=>'/tests/edit', 'id'=>'edit_test')); }}
 				<div class="alert alert-danger" id="editErrors">
@@ -90,7 +89,7 @@
 				{{ Form::close(); }}
 			</div>
 		</div>
-		
+
 		<a href="{{ URL::to('courses/' . $test->course_id . '/view') }}" class="btn btn-danger"><span class="glyphicon glyphicon-arrow-left"></span> Back to Course</a> 
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 	</div>

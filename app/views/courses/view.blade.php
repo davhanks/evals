@@ -8,12 +8,12 @@
 		</div>
 		@if(Session::has('message'))
 		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 			<p>{{ Session::get('message') }}</p>
 		</div>
 		@endif
 		<h1>View Course</h1>
-		
-		
+
 		<div id="tabs">
 			<ul class="nav nav-tabs" role="tablist">
 			  <li id="tab1" class="active"><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>

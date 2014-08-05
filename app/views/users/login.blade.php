@@ -21,7 +21,6 @@
 			@endif
 			{{ Form::open(array('url'=>'users/signin', 'class'=>'form-signin')) }}
 			    {{ HTML::image('images/login.jpg'); }}
-			 
 			    {{ Form::text('email', null, array('class'=>'input-block-level', 'placeholder'=>'Email Address')) }} <br />
 			    {{ Form::password('password', array('class'=>'input-block-level', 'placeholder'=>'Password')) }} <br />
 			    {{ Form::submit('Login', array('class'=>'btn btn-large btn-primary'))}}
@@ -29,5 +28,5 @@
 			</div>
 		</div>
 	</div>
-</div>	
+</div>
 @stop

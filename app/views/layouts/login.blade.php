@@ -6,7 +6,6 @@
 		{{ HTML::style('css/login.css'); }}
 		{{ HTML::script('js/jquery.min.js'); }}
 		{{ HTML::script('js/bootstrap.js'); }}
-		{{ HTML::script('js/message.js'); }}
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	</head>
 	<body>
@@ -26,14 +25,10 @@
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      <ul class="nav navbar-nav">
-
-		      	<li><a href="{{ URL::to('users/register') }}">Signup</a></li>
-		      	<li><a href="{{ URL::to('users/password') }}">Forgot Password?</a></li>
-		        
-		      </ul>
-
-		      
+		    	<ul class="nav navbar-nav">
+			      	<li><a href="{{ URL::to('users/register') }}">Signup</a></li>
+			      	<li><a href="{{ URL::to('users/password') }}">Forgot Password?</a></li>
+		    	</ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>

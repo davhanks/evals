@@ -4,7 +4,6 @@ class TestsController extends BaseController {
 	public function __construct() {
 	    // $this->beforeFilter('csrf', array('on'=>'post'));
 	    // $this->beforeFilter('auth', array('only'=>array('get_dashboard')));
-	    
 	    // $this->beforeFilter('is_staff', array('only'=>array('get_staff_dashboard')));
 	    // $this->beforeFilter('is_staff', array('only'=>array('get_dashboard')));
 	    // $this->beforeFilter('is_superuser', array('only'=>array('get_user_list')));
@@ -24,7 +23,21 @@ class TestsController extends BaseController {
 		} else{
 			return Redirect::to('users/dashboard')->with('message', 'Permission to view denied');
 		}
-		
+
+	}
+
+	public function get_student_tests($id) {
+		return View::make('tests.list')
+		->with('title', 'Tests')
+		->with('course', Course::find($id))
+		->with('tests', Test::where('course_id', '=', $id)->get());
+	}
+
+	public function get_test_detail($id) {
+		$test = Test::find($id);
+		return View::make('tests.detail')
+		->with('title', $test->name)
+		->with('test', $test);
 	}
 
 	public function get_test_new($courseid) {
@@ -91,7 +104,7 @@ class TestsController extends BaseController {
 					'errors'=> $v->getMessageBag()->toArray()
 				), 200);
 			}
-			
+
 			$test = Test::find(Input::get('testID'));
 			$test->name = e(Input::get('name'));
 			$test->description = e(Input::get('description'));

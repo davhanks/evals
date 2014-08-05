@@ -1,5 +1,5 @@
- html { 
-  background: url(/images/trees_lake.jpg) no-repeat center center fixed; 
+ html {
+  background: url(/images/trees_lake.jpg) no-repeat center center fixed;
   background-color: rgba(255,255,255,0.7);
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -10,7 +10,7 @@
 
 body {
 	background-color:rgba(44,53,57,0);
-	overflow-x: hidden; 
+	overflow-x: hidden;
 	overflow-y: scroll;
 
 }
@@ -40,6 +40,10 @@ body {
     overflow-y: scroll;
 }
 
+hr {
+	border-top:1px solid #000;
+}
+
 #description_holder {
 	display: inline-block;
 	position: fixed;
@@ -51,7 +55,7 @@ body {
 /*.description-hover {
 	transition: opacity 1s;
 	-webkit-transition: opacity 1s;
-	
+
 	position: absolute;
 	top: 0px;
 	left: 50%;
@@ -95,4 +99,3 @@ body {
 form > button {
 	margin-top: 5px;
 }
-

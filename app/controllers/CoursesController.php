@@ -4,7 +4,6 @@ class CoursesController extends BaseController {
 	public function __construct() {
 	    // $this->beforeFilter('csrf', array('on'=>'post'));
 	    // $this->beforeFilter('auth', array('only'=>array('get_dashboard')));
-	    
 	    // $this->beforeFilter('is_staff', array('only'=>array('get_staff_dashboard')));
 	    // $this->beforeFilter('is_staff', array('only'=>array('get_dashboard')));
 	    // $this->beforeFilter('is_superuser', array('only'=>array('get_user_list')));
@@ -22,7 +21,6 @@ class CoursesController extends BaseController {
 		} else{
 			return Redirect::to('users/dashboard')->with('message', 'Permission to view denied');
 		}
-		
 	}
 
 	public function get_view_course($id) {
@@ -67,7 +65,6 @@ class CoursesController extends BaseController {
 					'errors'=> $v->getMessageBag()->toArray()
 				), 200);
 			}
-			
 			$course = Course::find(Input::get('courseID'));
 			$course->name = e(Input::get('name'));
 			$course->description = e(Input::get('description'));

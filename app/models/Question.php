@@ -22,6 +22,6 @@ class Question extends Eloquent {
 		} else {
 			return false;
 		}
-	}	
+	}
 
 }

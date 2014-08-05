@@ -81,7 +81,7 @@
 							</div>
 						@endif
 					</td>
-				
+
 					<td>
 						<script>
 							$(function(){
@@ -114,7 +114,7 @@
 				@endforeach
 			</tbody>
 		</table>
-		
+
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 		<a class="btn btn-danger" href="{{ URL::to('tests/list') }}">Tests</a>
 		<a class="btn btn-success" href="{{ URL::to('courses/list') }}">Courses</a>

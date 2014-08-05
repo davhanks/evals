@@ -1,11 +1,10 @@
 <?php
 
 class UsersController extends BaseController {
-	
+
 	public function __construct() {
 	    // $this->beforeFilter('csrf', array('on'=>'post'));
 	    $this->beforeFilter('auth', array('only'=>array('get_dashboard')));
-	    
 	    $this->beforeFilter('is_staff', array('only'=>array('get_staff_dashboard')));
 	    // $this->beforeFilter('is_staff', array('only'=>array('get_dashboard')));
 	    $this->beforeFilter('is_superuser', array('only'=>array('get_user_list')));
@@ -112,7 +111,7 @@ class UsersController extends BaseController {
 
 			if($v->fails()) {
 				return Response::json(array(
-					'success'=>false, 
+					'success'=>false,
 					'errors'=> $v->getMessageBag()->toArray()
 				), 200);
 			}
@@ -123,12 +122,12 @@ class UsersController extends BaseController {
 			$setting->save();
 
 			$data = json_encode(array(
-				'success'=>true, 
+				'success'=>true,
 				'temp'=>$setting->temp_limit
 				));
 			return $data;
 		}
-		
+
 	}
 
 	public function get_logout() {
@@ -150,7 +149,7 @@ class UsersController extends BaseController {
 			}
 
 			$course = Course::where('signup_id', '=', Input::get('signup_id'))->first();
-			
+
 			$isEmpty = false;
 
 			if($course == null) {
@@ -181,7 +180,6 @@ class UsersController extends BaseController {
 				'isEmpty'=>$isEmpty
 			));
 
-			
 		}
 	}
 
@@ -236,5 +234,5 @@ class UsersController extends BaseController {
 			}
 		}
 	}
-	
+
 }

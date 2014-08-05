@@ -86,11 +86,17 @@ Route::get('tests/{id}/new', array('as'=>'new_test', 'uses'=>'TestsController@ge
 Route::post('tests/create', array('uses'=>'TestsController@post_create_test'));
 Route::get('tests/{id}/view', array('uses'=>'TestsController@get_test_view'))
 	->where('id', '[0-9]+');
+Route::get('tests/{id}/list', array('uses'=>'TestsController@get_student_tests'))
+	->where('id', '[0-9]+');
+Route::get('tests/{id}/detail', array('uses'=>'TestsController@get_test_detail'))
+	->where('id', '[0-9]+');
 
 //Ajax
 Route::post('tests/switch_test_active', array('uses'=>'TestsController@post_switch_active'));
 Route::post('tests/edit', array('uses'=>'TestsController@post_edit_test'));
 
+//Tester
+Route::get('tester/{id}', array('uses'=>'TesterController@generate_test'))->where('id', '[0-9]+');
 
 // Questions Routes
 Route::get('questions/{id}/new', array('as'=>'new_question', 'uses'=>'QuestionsController@get_question_new'))
