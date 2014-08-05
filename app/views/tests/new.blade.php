@@ -16,7 +16,7 @@
 		<h2>New Test</h2>
 			{{ Form::input('hidden', 'courseID', $courseid); }}
 			{{ Form::input('text', 'name', null, array('class'=>'form-control','placeholder'=>'Test Name')); }} <br />
-			{{ Form::textarea('desc', null, array('class'=>'form-control', 'placeholder'=>'Test Description')); }} <br />
+			{{ Form::textarea('description', null, array('class'=>'form-control', 'placeholder'=>'Test Description')); }} <br />
 		<div class="input-group date" id="datetimepicker1">
 			{{ Form::text('date_due', '', array('class' => 'form-control','placeholder' => 'Due Date: MM/DD/YYY HH:MM AM/PM')) }}
 			</div>

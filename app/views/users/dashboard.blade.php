@@ -31,14 +31,44 @@
 				<table class="table">
 					<thead>
 						<th>Name</th>
-						<th>Is Correct</th>
-						<th>Active</th>
+						<th>Description</th>
+						<th>Progress</th>
 						<th>Action</th>
 					</thead>
 					<tbody>
 						@foreach($courses as $course)
 						<tr>
 							<td>{{ $course->name }}</td>
+							<td>
+								<button class="btn btn-info" data-toggle="modal" data-target="#myModal-{{ $course->id }}">
+									<span class="glyphicon glyphicon-info-sign"></span> Description
+								</button>
+
+								<div class="modal fade" id="myModal-{{ $course->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								  <div class="modal-dialog">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								        <h4 class="modal-title" id="myModalLabel">{{ $course->name }}</h4>
+								      </div>
+								      <div class="modal-body">
+								      	{{ $course->description }}
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+							</td>
+							<td>
+								<div class="progress">
+								    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+								    	0%
+								    </div>
+								</div>
+							</td>
+							<td><a class="btn btn-primary" href="">View Tests</a></td>
 						</tr>
 						@endforeach
 					</tbody>

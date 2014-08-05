@@ -41,7 +41,7 @@ class TestsController extends BaseController {
 		} else {
 			$test = new Test;
 			$test->name = $test->sanitize(Input::get('name'));
-			$test->description = $test->sanitize(Input::get('desc'));
+			$test->description = $test->sanitize(Input::get('description'));
 			$test->number_of_questions = 0;
 			$test->date_due = new DateTime(Input::get('date_due'));
 			$test->total_points = 0;
