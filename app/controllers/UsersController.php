@@ -62,7 +62,7 @@ class UsersController extends BaseController {
 
 	public function get_dashboard() {
 
-		return View::make('users.dashboard')->with('title', 'Dashboard')->with('user', Auth::user());
+		return View::make('users.dashboard')->with('title', 'Dashboard')->with('user', Auth::user())->with('courses', User::find(Auth::user()->id)->enrollments);
 	}
 
 	public function get_settings() {
@@ -70,10 +70,10 @@ class UsersController extends BaseController {
 		    ->with('setting', Setting::where('user_id', '=', Auth::user()->id)->first());
 	}
 
-	public function get_staff_dashboard() {
+	// public function get_staff_dashboard() {
 
-		return View::make('users.staffdashboard')->with('title', 'Staff Dashboard')->with('user', Auth::user());
-	}
+	// 	return View::make('users.staffdashboard')->with('title', 'Staff Dashboard')->with('user', Auth::user());
+	// }
 
 	public function get_user_list() {
 		return View::make('users.list')->with('title', 'User List')->with('users', User::all());
@@ -150,7 +150,17 @@ class UsersController extends BaseController {
 			}
 
 			$course = Course::where('signup_id', '=', Input::get('signup_id'))->first();
-			// $course->users()->attach(Auth::user()->id);
+			
+			$isEmpty = false;
+
+			if($course == null) {
+				$isEmpty = true;
+				return json_encode(array(
+					'success'=>false,
+					'errors'=>array('courseExist'=>array('There is no course for the given ID'))
+				));
+			}
+
 			$courses = User::find(Auth::user()->id)->enrollments;
 
 			$add = true;
@@ -167,7 +177,8 @@ class UsersController extends BaseController {
 			return json_encode(array(
 				'success'=>true,
 				'courses'=>$courses,
-				'add'=>$add
+				'add'=>$add,
+				'isEmpty'=>$isEmpty
 			));
 
 			

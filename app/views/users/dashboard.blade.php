@@ -12,8 +12,8 @@
 		<div id="tabs">
 			<ul class="nav nav-tabs" role="tablist">
 			  <li id="tab1" class="active"><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Info</a></li>
-			  <li id="tab2"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Answers</a></li>
-			  <li id="tab3"><a href="#"><span class="glyphicon glyphicon-cog"></span> Edit Question</a></li>
+			  <li id="tab2"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Courses</a></li>
+			  <li id="tab3"><a href="#"><span class="glyphicon glyphicon-pencil"></span> Sign-up</a></li>
 			</ul>
 			<div id="panel1">
 				<p>{{ $user->first_name }} {{ $user->last_name }}</p>
@@ -28,16 +28,19 @@
 				<p>Member since: {{ $user->created_at->format('M-d-Y'); }}</p>
 			</div>
 			<div id="panel2">
-				<a class="btn btn-success" href=""><span class="glyphicon glyphicon-plus"></span> New Answer</a>
 				<table class="table">
 					<thead>
-						<th>Text</th>
+						<th>Name</th>
 						<th>Is Correct</th>
 						<th>Active</th>
 						<th>Action</th>
 					</thead>
 					<tbody>
-					
+						@foreach($courses as $course)
+						<tr>
+							<td>{{ $course->name }}</td>
+						</tr>
+						@endforeach
 					</tbody>
 				</table>
 			</div>
@@ -52,9 +55,7 @@
 				{{ Form::close(); }}
 			</div>
 		</div>
-		
 
-		<a href="{{ URL::to('users/signup') }}" class="btn btn-danger"><span class="glyphicon glyphicon-pencil"></span> Course Sign-up</a>
 		<a id="ajax" href="#" class="btn btn-warning">Weather</a>
 	</div>
 </div>
