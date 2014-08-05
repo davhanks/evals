@@ -11,15 +11,18 @@
 			</div>
 			<p id="course_description">{{ $test->description }}</p>
 			<hr>
+			{{ Form::open(array('url'=>'/tester/submit' ,'id'=>'questions-form')) }}
 			@foreach($test->questions as $question)
 				<strong>{{ $question->question_number }}.</strong> <strong>{{ $question->text }}</strong>
-				{{ Form::open(array('id'=>'question-' . $question->id)) }}
+
 				@foreach($question->answers as $answer)
 					<p>{{ Form::radio($question->id, $answer->id) }} {{ $answer->text }}</p>
 				@endforeach
-				{{ Form::close() }}
 				<hr>
+
 			@endforeach
+			{{Form::button('<span class="glyphicon glyphicon-send"></span> Submit', array('type' => 'submit', 'class' => 'btn btn-danger')) }}
+			{{ Form::close() }}
 
 		</div>
 	</div>
