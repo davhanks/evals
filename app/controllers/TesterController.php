@@ -8,4 +8,13 @@ class TesterController extends BaseController {
 		->with('title', 'Test')
 		->with('test', Test::where('id', '=', $id)->with('questions')->first());
 	}
+
+	public function submit_test() {
+		$input = Input::except('_token');
+
+		if($input['userID'] != Auth::user()->id) {
+			return Redirect::to('users/dashboard')->with('message', "User ID's for logged in user and user submitting test did not match!");
+		}
+		return $input;
+	}
 }

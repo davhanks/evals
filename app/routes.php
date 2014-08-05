@@ -97,6 +97,7 @@ Route::post('tests/edit', array('uses'=>'TestsController@post_edit_test'));
 
 //Tester
 Route::get('tester/{id}', array('uses'=>'TesterController@generate_test'))->where('id', '[0-9]+');
+Route::post('tester/submit', array('uses'=>'TesterController@submit_test'));
 
 // Questions Routes
 Route::get('questions/{id}/new', array('as'=>'new_question', 'uses'=>'QuestionsController@get_question_new'))
