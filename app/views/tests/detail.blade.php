@@ -26,7 +26,11 @@
 			<div class="errors">
 
 			</div>
+			@if(Auth::user()->active_submission())
 			<a class="btn btn-danger" href="{{ URL::to('tester/' . $test->id) }}"><span class="glyphicon glyphicon-plus"></span> Start Test</a>
+			@else
+			<a class="btn btn-success" href="{{ URL::to('tester/' . $test->id) }}"><span class="glyphicon glyphicon-play"></span> Resume Test</a>
+			@endif
 		</div>
 	</div>
 </div>

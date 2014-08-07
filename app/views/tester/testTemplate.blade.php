@@ -13,6 +13,7 @@
 			<hr>
 			{{ Form::open(array('url'=>'/tester/submit' ,'id'=>'questions-form')) }}
 			{{ Form::input('hidden', 'testID', $test->id) }}
+			{{ Form::input('hidden', 'submissionID', $submissionID) }}
 			{{ Form::input('hidden', 'userID', Auth::user()->id) }}
 			@foreach($test->questions as $question)
 				<strong>{{ $question->question_number }}.</strong> <strong>{{ $question->text }}</strong>
